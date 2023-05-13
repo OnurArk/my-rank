@@ -1,0 +1,41 @@
+.search-bar-container {
+  height: 3rem;
+
+  position: absolute;
+  background-color: rgb(198, 185, 142);
+  right: 0;
+  left: 0;
+  bottom: -3rem;
+
+  padding: 0.8rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.search-bar {
+  outline: none;
+  border: none;
+
+  min-width: 13rem;
+  width: 70%;
+
+  border-radius: 15px;
+  padding: 0.5rem;
+}
+
+.search-bar::placeholder {
+  text-align: center;
+}
+
+@media (min-width: 28.5rem) {
+  .search-bar-container {
+    position: static;
+    background-color: inherit;
+    width: clamp(14rem, 30vw, 30rem);
+  }
+  .search-bar {
+    width: 100%;
+  }
+}

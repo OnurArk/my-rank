@@ -1,0 +1,28 @@
+.header-container {
+  height: 4.5rem;
+  padding: 2rem;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  position: sticky;
+  top: 0;
+  left: 0;
+  right: 0;
+
+  z-index: 1000;
+
+  font-size: 0.9rem;
+
+  background-color: #2b2d42;
+  color: rgb(255, 255, 255);
+
+  transition: all 0.4s ease;
+}
+
+@media (min-width: 37rem) {
+  .header-container {
+    font-size: 1rem;
+  }
+}

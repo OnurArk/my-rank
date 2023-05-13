@@ -1,0 +1,19 @@
+.active {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+
+  background-color: rgba(0, 0, 0, 0.491);
+
+  cursor: pointer;
+}
+
+.notActive {
+  display: none;
+}
+
+@media (min-width: 37rem) {
+  .active {
+    display: none;
+  }
+}

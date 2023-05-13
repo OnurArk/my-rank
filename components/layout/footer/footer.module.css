@@ -1,0 +1,21 @@
+.footer-container {
+  height: 3.5rem;
+  padding: 1.3rem;
+
+  background-color: white;
+  color: black;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  text-align: center;
+  font-size: 0.8rem;
+  font-weight: 500;
+}
+
+@media (min-width: 37rem) {
+  .footer-container {
+    font-size: 1rem;
+  }
+}

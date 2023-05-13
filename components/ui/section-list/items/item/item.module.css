@@ -1,0 +1,33 @@
+.item-container {
+  display: flex;
+  flex-direction: column;
+
+  cursor: pointer;
+  user-select: none;
+}
+
+.img-container {
+  height: 85%;
+  width: 100%;
+
+  overflow: hidden;
+
+  position: relative;
+
+  filter: contrast(120%);
+}
+
+.title {
+  color: rgb(0, 110, 165);
+  text-align: center;
+}
+
+.score {
+  padding: 0.5rem;
+  background-color: #388985c9;
+  color: rgba(255, 255, 255, 0.775);
+
+  position: absolute;
+
+  top: -0.3rem;
+}
