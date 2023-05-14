@@ -1,0 +1,54 @@
+.card-container {
+  position: relative;
+  padding: 0.5rem;
+
+  border-radius: 15px;
+  width: calc(225px + 2rem);
+  height: calc(371px + 2rem);
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  gap: 0.5rem;
+
+  cursor: pointer;
+  background: linear-gradient(
+    -45deg,
+    #58a26f80,
+    #068cb874,
+    #22aab981,
+    #92deaa77
+  );
+}
+
+.img-container {
+  height: 321px;
+
+  overflow: hidden;
+
+  position: relative;
+
+  filter: contrast(120%);
+}
+
+.score {
+  padding: 0.5rem;
+  background-color: #388985c9;
+  color: rgba(255, 255, 255, 0.775);
+
+  position: absolute;
+
+  top: -0.3rem;
+}
+
+.type {
+  padding: 0.4rem;
+  position: absolute;
+  top: 0;
+  right: 0;
+  color: rgb(255, 255, 255);
+  background-color: rgba(47, 18, 14, 0.75);
+  z-index: 10;
+}

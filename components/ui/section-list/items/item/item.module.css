@@ -7,7 +7,7 @@
 }
 
 .img-container {
-  height: 85%;
+  height: 265px;
   width: 100%;
 
   overflow: hidden;
@@ -30,4 +30,14 @@
   position: absolute;
 
   top: -0.3rem;
+}
+
+.rank {
+  padding: 0 0.7rem;
+  background-color: #a56173c9;
+  color: rgba(255, 255, 255, 0.775);
+
+  position: absolute;
+
+  bottom: 25px;
 }

@@ -21,6 +21,11 @@
   transition: all 0.4s ease;
 }
 
+.link {
+  color: inherit;
+  text-decoration: none;
+}
+
 @media (min-width: 37rem) {
   .header-container {
     font-size: 1rem;

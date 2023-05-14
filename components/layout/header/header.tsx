@@ -1,4 +1,5 @@
 import { FC, useState } from 'react';
+import Link from 'next/link';
 
 import SearchBar from './searchbar/search-bar';
 import MainNav from './main-nav/main-nav';
@@ -19,7 +20,9 @@ const Header: FC<Props> = () => {
   return (
     <div className={styles['header-container']}>
       <Background isActive={isActive} onClick={toggleHamburger} />
-      <h1 className={styles.logo}>My Rank</h1>
+      <Link href={{ pathname: '/' }} className={styles.link}>
+        <h1 className={styles.logo}>My Rank</h1>
+      </Link>
       <SearchBar />
 
       <Hamburger isActive={isActive} onClick={toggleHamburger} />

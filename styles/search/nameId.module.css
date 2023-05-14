@@ -1,0 +1,19 @@
+.search-container {
+  min-height: calc(100vh - 3.5rem - 4.5rem);
+
+  position: relative;
+
+  background-color: #287759;
+  background-image: url(/images/search-background.jpg);
+  background-repeat: repeat;
+
+  display: flex;
+  justify-content: center;
+}
+
+.search-container::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-color: #8b859787;
+}
