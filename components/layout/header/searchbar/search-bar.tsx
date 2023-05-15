@@ -25,7 +25,7 @@ const SearchBar: FC<Props> = (props) => {
     <form className={styles['search-bar-container']} onSubmit={searchHandler}>
       <input
         type='text'
-        placeholder='Search for Anime or Character'
+        placeholder='Search for Anime'
         className={styles['search-bar']}
         ref={queryRef}
         defaultValue=''
