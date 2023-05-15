@@ -18,8 +18,8 @@ const Card: FC<Props> = (props) => {
           loader={() => props.data?.images.jpg.image_url}
           src={`${props.data.title}.png`}
           alt={props.data?.title || props.data.name}
-          width={225}
-          height={321}
+          width={185}
+          height={265}
         />
       </div>
       <p className={styles.title}>

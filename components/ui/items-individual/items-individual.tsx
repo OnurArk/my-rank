@@ -40,9 +40,9 @@ const ItemsIndividual: FC<Props> = (props) => {
 
   return (
     <div className={styles['items-container']}>
-      {searchData?.data.map((item) =>
-        item.approved ? <CardWild data={item} key={item.mal_id} /> : null
-      )}
+      {searchData?.data.map((item) => (
+        <CardWild data={item} key={item.mal_id} />
+      ))}
     </div>
   );
 };

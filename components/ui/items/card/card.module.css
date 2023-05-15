@@ -13,18 +13,13 @@
   text-align: center;
   gap: 0.5rem;
 
+  color: #424f4ec9;
+  font-weight: 500;
   cursor: pointer;
-  background: linear-gradient(
-    -45deg,
-    #58a26f80,
-    #068cb874,
-    #22aab981,
-    #92deaa77
-  );
 }
 
 .img-container {
-  height: 321px;
+  height: 265px;
 
   overflow: hidden;
 
@@ -48,7 +43,7 @@
   position: absolute;
   top: 0;
   right: 0;
-  color: rgb(255, 255, 255);
-  background-color: rgba(47, 18, 14, 0.75);
+  color: rgb(0, 0, 0);
+  background-color: rgba(255, 255, 255, 0.75);
   z-index: 10;
 }

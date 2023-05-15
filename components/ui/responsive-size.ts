@@ -1,16 +1,20 @@
 import { useState, useEffect } from 'react';
 
-const ResponsiveSize = () => {
-  const [itemsPerPage, setItemsPerPage] = useState(
-    window.innerWidth > 1276 ? 15 : 12
+type ResponseProps = {
+  limit: number;
+};
+
+const ResponsiveSize = (props: ResponseProps) => {
+  const [isGreaterLimit, setIsGreaterLimit] = useState<boolean>(
+    window.innerWidth > props.limit ? true : false
   );
 
   useEffect(() => {
     const handleResize = () => {
       const newWindowWidth = window.innerWidth;
-      const newItemsPerPage = newWindowWidth > 1276 ? 15 : 12;
-      if (newItemsPerPage !== itemsPerPage) {
-        setItemsPerPage(newItemsPerPage);
+      const newIsGreaterLimit = newWindowWidth > props.limit ? true : false;
+      if (newIsGreaterLimit !== isGreaterLimit) {
+        setIsGreaterLimit(newIsGreaterLimit);
       }
     };
 
@@ -19,9 +23,9 @@ const ResponsiveSize = () => {
     return () => {
       window.removeEventListener('resize', handleResize);
     };
-  }, [itemsPerPage]);
+  }, [isGreaterLimit, props.limit]);
 
-  return {};
+  return { isGreaterLimit };
 };
 
 export default ResponsiveSize;
