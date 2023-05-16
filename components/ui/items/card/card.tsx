@@ -1,6 +1,6 @@
 import { FC } from 'react';
 import Image from 'next/image';
-import { ItemData } from '@/models/Item-Data';
+import { ItemData } from '@/models/Item-Type';
 
 import styles from './card.module.css';
 
@@ -24,9 +24,7 @@ const Card: FC<Props> = (props) => {
       </div>
       <p className={styles.title}>
         {props.data.title
-          ? `${props.data.title.slice(0, 50)}${
-              props.data.title && props.data.title.length > 50 ? '-' : ''
-            }`
+          ? `${props.data.title.slice(0, 50)}`
           : props.data.name}
       </p>
     </div>

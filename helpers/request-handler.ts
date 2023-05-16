@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 
-import { ItemData } from '../models/Item-Data';
+import { ItemData } from '../models/Item-Type';
 
 type Returns = {
   arrData: ItemData[];

@@ -2,7 +2,7 @@ import { FC } from 'react';
 import useSWR from 'swr';
 
 import Items from './items/items';
-import { ItemData } from '@/models/Item-Data';
+import { ItemData } from '@/models/Item-Type';
 
 import styles from './section-list.module.css';
 

@@ -12,11 +12,12 @@ const SearchPage: FC = () => {
   const router = useRouter();
 
   // const { isGreaterLimit } = ResponsiveSize({ limit: 720 });
+  console.log(router.query);
 
   return (
     <div>
       <div className={styles['search-container']}>
-        <ItemsList query={router.query.nameId} />
+        <ItemsList query={router.query} />
       </div>
     </div>
   );

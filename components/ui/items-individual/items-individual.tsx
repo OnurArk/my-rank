@@ -3,7 +3,7 @@ import useSWR from 'swr';
 
 import CardWild from './card-wild/card-wild';
 
-import { ItemData } from '@/models/Item-Data';
+import { ItemData } from '@/models/Item-Type';
 import styles from './items-individual.module.css';
 
 interface Data {

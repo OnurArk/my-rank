@@ -1,0 +1,14 @@
+.pagination {
+  padding: 0.3rem 0.5rem;
+  display: flex;
+  gap: 1rem;
+
+  font-size: 1.2rem;
+}
+
+.paginationNum {
+  padding: 0.3rem;
+  border: 1px solid black;
+  border-radius: 5px;
+  cursor: pointer;
+}

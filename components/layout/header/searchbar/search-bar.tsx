@@ -16,7 +16,7 @@ const SearchBar: FC<Props> = (props) => {
     const query = queryRef.current?.value;
 
     if (query) {
-      memoizedRouter.push(`/search/${query}`);
+      memoizedRouter.push(`/search/${query}/1`);
       queryRef.current.value = '';
     }
   };

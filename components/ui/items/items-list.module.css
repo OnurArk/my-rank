@@ -5,14 +5,22 @@
   max-width: 93rem;
 
   display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
+  flex-direction: column;
+
   align-items: center;
 
   position: relative;
   z-index: 100;
 
   /* backdrop-filter: blur(3px); */
+}
+
+.items {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 2.3rem;
 }
 
 .noResult {

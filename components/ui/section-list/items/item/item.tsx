@@ -1,7 +1,7 @@
 import { FC } from 'react';
 import Image from 'next/image';
 
-import { ItemData } from '@/models/Item-Data';
+import { ItemData } from '@/models/Item-Type';
 
 import styles from './item.module.css';
 

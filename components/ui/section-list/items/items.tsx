@@ -1,7 +1,7 @@
 import { FC } from 'react';
 
 import Item from './item/item';
-import { ItemData } from '@/models/Item-Data';
+import { ItemData } from '@/models/Item-Type';
 
 import styles from './items.module.css';
 

@@ -1,6 +1,6 @@
 import Head from 'next/head';
 
-import { ItemData } from '@/models/Item-Data';
+import { ItemData } from '@/models/Item-Type';
 
 import SectionList from '@/components/ui/section-list/section-list';
 
