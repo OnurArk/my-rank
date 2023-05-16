@@ -1,16 +1,25 @@
 import { FC } from 'react';
+import { useRouter } from 'next/router';
 
 import styles from './pagination.module.css';
 
 type Props = {
   pageNum: number | null;
   currentPage: number | null;
-  linkTo?: 'string';
+  linkTo: string;
 };
 
 const Pagination: FC<Props> = (props) => {
+  const router = useRouter();
+
+  const navigatePage = (toPage: number | string) => {
+    if (props.linkTo) {
+      router.push(`${props?.linkTo}/${toPage}`);
+    }
+  };
+
   const generateRange = (start: number, end: number) => {
-    return Array.from({ length: end - start + 1 }, (_, i) => start + i);
+    return Array.from({ length: end - start + 1 }, (_, index) => start + index);
   };
 
   const generatePagination = () => {
@@ -52,7 +61,13 @@ const Pagination: FC<Props> = (props) => {
   return (
     <ul className={styles.pagination}>
       {pages?.map((page, index) => (
-        <li key={index} className={page === '...' ? 'ellipsis' : ''}>
+        <li
+          key={index}
+          className={`${styles.paginationNum} ${
+            props.currentPage === page ? styles.activePag : null
+          }`}
+          onClick={() => navigatePage(page)}
+        >
           {page}
         </li>
       ))}

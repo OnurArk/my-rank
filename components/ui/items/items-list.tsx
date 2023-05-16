@@ -21,6 +21,8 @@ type Props = {
 const fetcher = (url: string) => fetch(url).then((res) => res.json());
 
 const ItemsList: FC<Props> = (props) => {
+  console.log(props.query.nameId);
+
   const {
     data: searchData,
     error,
@@ -51,7 +53,7 @@ const ItemsList: FC<Props> = (props) => {
           <Card data={item} key={item.mal_id} />
         ))}
       </div>
-      {/* <Pagination
+      <Pagination
         pageNum={
           searchData?.pagination.last_visible_page
             ? searchData?.pagination.last_visible_page
@@ -62,9 +64,8 @@ const ItemsList: FC<Props> = (props) => {
             ? searchData?.pagination.current_page
             : null
         }
-      /> */}
-
-      <Pagination pageNum={5} currentPage={5} />
+        linkTo={`${props.query.nameId?.[0]}`}
+      />
     </div>
   );
 };

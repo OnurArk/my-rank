@@ -3,7 +3,6 @@
   flex-direction: column;
 
   cursor: pointer;
-  user-select: none;
 }
 
 .img-container {
@@ -15,6 +14,7 @@
   position: relative;
 
   filter: contrast(120%);
+  user-select: none;
 }
 
 .title {
