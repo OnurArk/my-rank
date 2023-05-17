@@ -25,7 +25,7 @@ const SectionList: FC<Props> = (props) => {
 
   return (
     <div className={styles['section-list-container']}>
-      <p className={styles.title}>{props.sectionName}</p>
+      <h3 className={styles.title}>{props.sectionName}</h3>
       {!isLoading && !error && data && data.data && (
         <Items arrItems={data?.data} />
       )}

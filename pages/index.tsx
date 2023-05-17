@@ -1,8 +1,6 @@
 import Head from 'next/head';
 
-import { ItemData } from '@/models/Item-Type';
-
-import SectionList from '@/components/ui/section-list/section-list';
+import SectionList from '@/components/home/section-list/section-list';
 
 import styles from '@/styles/Home.module.css';
 
@@ -14,13 +12,18 @@ function Home() {
         <meta name='description' content='' />
       </Head>
       <div className={styles['sections-container']}>
-        <SectionList sectionName='Trending Now' endpoint={'seasons/now'} />
         <SectionList
-          sectionName='Up Coming Animes'
-          endpoint={'seasons/upcoming'}
+          sectionName='TRENDING NOW'
+          endpoint={'seasons/now?limit=5'}
         />
-        <SectionList sectionName='Top Animes' endpoint={'top/anime'} />
-        <SectionList sectionName='Top Characters' endpoint={'top/characters'} />
+        <SectionList
+          sectionName='UPCOMING NEXT SEASON'
+          endpoint={'seasons/upcoming?limit=5'}
+        />
+        <SectionList
+          sectionName='POPULAR ANİMES'
+          endpoint={'top/anime?filter=bypopularity&limit=5'}
+        />
       </div>
     </div>
   );

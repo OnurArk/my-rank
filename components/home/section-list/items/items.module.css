@@ -1,0 +1,9 @@
+.items-container {
+  height: 22rem;
+
+  display: flex;
+  justify-content: center;
+  align-items: self-start;
+
+  gap: 1rem;
+}

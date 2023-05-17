@@ -20,6 +20,7 @@
 .title {
   color: rgb(0, 110, 165);
   text-align: center;
+  max-width: 185px;
 }
 
 .score {
