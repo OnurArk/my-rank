@@ -13,59 +13,59 @@ interface Data {
 }
 
 type Props = {
-  query: {
-    nameId?: string[];
-  };
+  path: string;
 };
 
 const fetcher = (url: string) => fetch(url).then((res) => res.json());
 
+let linkTo: string;
+
 const ItemsList: FC<Props> = (props) => {
-  console.log(props.query.nameId);
+  linkTo = props.path.replace(/&?page=\d+/, '').trim();
+  console.log(props.path);
 
   const {
     data: searchData,
     error,
     isLoading,
   } = useSWR<Data>(
-    `https://api.jikan.moe/v4/anime?q=${props.query.nameId?.[0]}&page=${props.query.nameId?.[1]}`,
+    `https://api.jikan.moe/v4/${props.path ? props.path : 'anime'}`,
     fetcher
   );
 
   if (searchData?.data && searchData.data.length <= 0) {
     return (
       <div className={styles['items-container']}>
-        <p
-          className={styles.noResult}
-        >{`There Is No Result with "${props.query.nameId?.[0]}" Entery`}</p>
+        <p className={styles.noResult}>{`There Is No Result with "" Entery`}</p>
       </div>
     );
   }
-
-  console.log(searchData);
 
   if (error) return <div>Failed to load</div>;
 
   return (
     <div className={styles['items-container']}>
       <div className={styles.items}>
-        {searchData?.data.map((item) => (
+        {searchData?.data?.map((item) => (
           <Card data={item} key={item.mal_id} />
         ))}
       </div>
-      <Pagination
-        pageNum={
-          searchData?.pagination.last_visible_page
-            ? searchData?.pagination.last_visible_page
-            : null
-        }
-        currentPage={
-          searchData?.pagination.current_page
-            ? searchData?.pagination.current_page
-            : null
-        }
-        linkTo={`${props.query.nameId?.[0]}`}
-      />
+      {searchData?.pagination?.last_visible_page &&
+        searchData?.pagination?.last_visible_page > 1 && (
+          <Pagination
+            pageNum={
+              searchData?.pagination?.last_visible_page
+                ? searchData?.pagination.last_visible_page
+                : null
+            }
+            currentPage={
+              searchData?.pagination?.current_page
+                ? searchData?.pagination.current_page
+                : null
+            }
+            linkTo={`${linkTo}`}
+          />
+        )}
     </div>
   );
 };

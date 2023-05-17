@@ -15,6 +15,7 @@ const Item: FC<Props> = (props) => {
     <div className={styles['item-container']}>
       <div className={styles['img-container']}>
         {props.item.score && <p className={styles.score}>{props.item.score}</p>}
+        {props.item.type && <p className={styles.type}>{props.item.type}</p>}
         {!props.item.score && !props.item.title && props.rank && (
           <p className={styles.rank}>{props.rank}</p>
         )}
@@ -28,9 +29,7 @@ const Item: FC<Props> = (props) => {
       </div>
 
       {props.item.title && (
-        <p className={styles.title}>
-          {props.item.title.slice(0, 50)} - {props.item.type}
-        </p>
+        <p className={styles.title}>{props.item.title.slice(0, 50)}</p>
       )}
       {props.item.name && <p className={styles.title}>{props.item.name}</p>}
     </div>

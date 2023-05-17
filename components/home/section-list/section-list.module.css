@@ -5,8 +5,21 @@
   gap: 1rem;
 }
 
+.section-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
 .title {
   font-size: 1rem;
   font-weight: 700;
   color: #516170;
+}
+
+.forMore {
+  font-size: 0.8rem;
+  color: #a7a7a7;
+  cursor: pointer;
+  letter-spacing: 0.05rem;
 }

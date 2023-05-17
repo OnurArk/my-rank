@@ -18,9 +18,10 @@
 }
 
 .title {
-  color: rgb(0, 110, 165);
+  color: #516170;
   text-align: center;
   max-width: 185px;
+  text-overflow: ellipsis;
 }
 
 .score {
@@ -41,4 +42,13 @@
   position: absolute;
 
   bottom: 25px;
+}
+
+.type {
+  padding: 0 0.7rem;
+
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(240, 255, 255, 0.592);
 }

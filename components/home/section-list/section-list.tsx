@@ -1,4 +1,5 @@
 import { FC } from 'react';
+import Link from 'next/link';
 import useSWR from 'swr';
 
 import Items from './items/items';
@@ -23,9 +24,18 @@ const SectionList: FC<Props> = (props) => {
     fetcher
   );
 
+  const unlimitedHref = props.endpoint.includes('?limit=5')
+    ? props.endpoint.replace('?limit=5', '').concat('?page=1')
+    : props.endpoint.replace('&limit=5', '').concat('&page=1');
+
   return (
     <div className={styles['section-list-container']}>
-      <h3 className={styles.title}>{props.sectionName}</h3>
+      <div className={styles['section-top']}>
+        <h3 className={styles.title}>{props.sectionName}</h3>
+        <Link href={`search/${unlimitedHref}`}>
+          <h4 className={styles.forMore}>See More</h4>
+        </Link>
+      </div>
       {!isLoading && !error && data && data.data && (
         <Items arrItems={data?.data} />
       )}

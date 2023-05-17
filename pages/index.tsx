@@ -9,7 +9,10 @@ function Home() {
     <div className={styles['home-container']}>
       <Head>
         <title>My Rank - Home</title>
-        <meta name='description' content='' />
+        <meta
+          name='description'
+          content='Trending Anime, Upcoming Anime, Populer Anime'
+        />
       </Head>
       <div className={styles['sections-container']}>
         <SectionList

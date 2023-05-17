@@ -14,7 +14,7 @@ const Pagination: FC<Props> = (props) => {
 
   const navigatePage = (toPage: number | string) => {
     if (props.linkTo) {
-      router.push(`${props?.linkTo}/${toPage}`);
+      router.push(`${props?.linkTo}&page=${toPage}`);
     }
   };
 
