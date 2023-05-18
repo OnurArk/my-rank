@@ -1,0 +1,21 @@
+.input {
+  border: none;
+  outline: none;
+
+  width: var(--width);
+  padding: var(--padding);
+
+  caret-color: #ffffff;
+  background-color: #2b2d42;
+  color: white;
+}
+
+.input::placeholder {
+  text-align: center;
+  color: rgba(255, 255, 255, 0.73);
+}
+
+.input[type='number']::-webkit-outer-spin-button,
+.input[type='number']::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}

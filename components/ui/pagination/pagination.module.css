@@ -16,5 +16,18 @@
 }
 
 .activePag {
-  background-color: aquamarine;
+  border-bottom: solid rgba(0, 187, 255, 0.704) 1px;
+}
+
+.ellipsis {
+  cursor: text;
+}
+
+.input-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+
+  overflow: hidden;
 }

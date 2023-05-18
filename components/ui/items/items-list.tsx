@@ -22,7 +22,6 @@ let linkTo: string;
 
 const ItemsList: FC<Props> = (props) => {
   linkTo = props.path.replace(/&?page=\d+/, '').trim();
-  console.log(props.path);
 
   const {
     data: searchData,
