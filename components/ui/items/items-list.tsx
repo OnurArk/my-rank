@@ -40,6 +40,7 @@ const ItemsList: FC<Props> = (props) => {
       </div>
     );
   }
+  console.log(searchData);
 
   if (error) return <div>Failed to load</div>;
 
@@ -63,7 +64,7 @@ const ItemsList: FC<Props> = (props) => {
                 ? searchData?.pagination.current_page
                 : null
             }
-            linkTo={`${linkTo}`}
+            linkTo={linkTo}
           />
         )}
     </div>
