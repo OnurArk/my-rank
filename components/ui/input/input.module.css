@@ -2,7 +2,7 @@
   border: none;
   outline: none;
 
-  width: var(--width);
+  width: 100%;
   padding: var(--padding);
 
   caret-color: #ffffff;

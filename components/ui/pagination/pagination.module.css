@@ -1,15 +1,22 @@
 .pagination {
   margin-top: auto;
-
   padding: 0.3rem 0.5rem;
+
+  align-self: center;
+  justify-self: flex-end;
   display: flex;
   gap: 1rem;
 
   font-size: 1.2rem;
 }
 
+.pagination-list {
+  display: flex;
+  gap: 1rem;
+}
+
 .paginationNum {
-  padding: 0.3rem;
+  padding: 0 0.4rem;
 
   border-radius: 5px;
   cursor: pointer;
@@ -17,6 +24,7 @@
 
 .activePag {
   border-bottom: solid rgba(0, 187, 255, 0.704) 1px;
+  box-shadow: 0 -1px 3px rgba(0, 187, 255, 0.704);
 }
 
 .ellipsis {
@@ -24,10 +32,20 @@
 }
 
 .input-container {
+  width: 3rem;
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
 
   overflow: hidden;
+}
+
+@media (max-width: 28rem) {
+  .pagination-list {
+    display: none;
+  }
+  .input-container {
+    width: 5rem;
+  }
 }

@@ -76,25 +76,26 @@ const Pagination: FC<Props> = (props) => {
 
   return (
     <ul className={styles.pagination}>
-      {props.pageNum &&
-        pages?.map((page, index) => (
-          <li
-            key={index}
-            className={`${styles.paginationNum} ${
-              props.currentPage === page ? styles.activePag : null
-            } ${typeof page === 'string' ? styles.ellipsis : null}`}
-            onClick={() => navigatePage(page)}
-          >
-            {page}
-          </li>
-        ))}
+      <div className={styles['pagination-list']}>
+        {props.pageNum &&
+          pages?.map((page, index) => (
+            <li
+              key={index}
+              className={`${styles.paginationNum} ${
+                props.currentPage === page ? styles.activePag : null
+              } ${typeof page === 'string' ? styles.ellipsis : null}`}
+              onClick={() => navigatePage(page)}
+            >
+              {page}
+            </li>
+          ))}
+      </div>
       {props.pageNum && (
         <div className={styles['input-container']}>
           <Input
             type='text'
             placeholder={`/${props.pageNum}`}
             name='pageNum'
-            width={3}
             padding={'0.3rem 0'}
             positionText='center'
             ref={inputRef}
