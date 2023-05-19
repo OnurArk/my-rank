@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { FC, CSSProperties } from 'react';
 import useSWR from 'swr';
 
 import Card from './card/card';
@@ -14,6 +14,8 @@ interface Data {
 
 type Props = {
   path: string;
+  imgWidth?: number;
+  limit: number;
 };
 
 const fetcher = (url: string) => fetch(url).then((res) => res.json());
@@ -39,7 +41,6 @@ const ItemsList: FC<Props> = (props) => {
       </div>
     );
   }
-  console.log(searchData);
 
   if (error) return <div>Failed to load</div>;
 
@@ -47,7 +48,7 @@ const ItemsList: FC<Props> = (props) => {
     <div className={styles['items-container']}>
       <div className={styles.items}>
         {searchData?.data?.map((item) => (
-          <Card data={item} key={item.mal_id} />
+          <Card data={item} key={item.mal_id} width={props.imgWidth} />
         ))}
       </div>
       {searchData?.pagination?.last_visible_page &&

@@ -1,8 +1,7 @@
 .card-container {
   position: relative;
 
-  width: 185px;
-  height: 360px;
+  width: var(--width);
 
   display: flex;
   flex-direction: column;
@@ -17,8 +16,8 @@
 }
 
 .img-container {
-  height: 265px;
-  min-height: 265px;
+  height: calc(var(--width) * 1.55);
+  min-height: calc(var(--width) * 1.55);
 
   overflow: hidden;
 
