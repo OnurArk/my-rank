@@ -21,11 +21,11 @@ function Home() {
         />
         <SectionList
           sectionName='UPCOMING NEXT SEASON'
-          endpoint={'seasons/upcoming?limit=5'}
+          endpoint={'seasons/upcoming?filter=tv&limit=5'}
         />
         <SectionList
           sectionName='POPULAR ANİMES'
-          endpoint={'top/anime?filter=bypopularity&limit=5'}
+          endpoint={'top/anime?filter=bypopularity&type=tv&limit=5'}
         />
       </div>
     </div>
