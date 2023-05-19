@@ -15,7 +15,7 @@ const SearchBar: FC<Props> = (props) => {
     const query = queryRef.current?.value;
 
     if (query) {
-      memoizedRouter.push(`/search/anime?q=${query}&page=1`);
+      memoizedRouter.push(`/search/anime?q=${query}&page=1&sfw`);
       queryRef.current.value = '';
     }
   };

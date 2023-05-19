@@ -2,7 +2,7 @@
   height: 3rem;
 
   position: absolute;
-  background-color: rgb(198, 185, 142);
+  background-color: #2b2d42;
   right: 0;
   left: 0;
   bottom: -3rem;
@@ -30,7 +30,7 @@
   text-align: center;
 }
 
-@media (min-width: 28.5rem) {
+@media (min-width: 30rem) {
   .search-bar-container {
     position: static;
     background-color: inherit;
