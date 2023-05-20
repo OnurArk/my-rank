@@ -1,29 +1,46 @@
-import { useEffect, useState } from 'react';
-
-import { ItemData } from '../models/Item-Type';
-
-type Returns = {
-  arrData: ItemData[];
-  error: boolean;
-  isLoading: boolean;
+type Props = {
+  title: string;
+  page: number;
+  limit: number;
+  query: string;
 };
 
-export const getAnimeByName = async (animeName: string) => {
-  try {
-    const response = await fetch(
-      `https://api.jikan.moe/v4/anime?q=${animeName}&sfw`
-    );
+let endPoint: string;
+let toPagination: string;
+let type: string[];
 
-    if (!response.ok) {
-      throw new Error();
-    }
+export const getSearch = (props: Props) => {
+  const { title, page, limit, query } = props;
 
-    const data = await response.json();
-
-    return data;
-  } catch (err) {
-    console.log(err);
+  if (title === 'popular-anime') {
+    endPoint = `top/anime?filter=bypopularity&page=${page}&limit=${limit}&`;
+    toPagination = `${title}?`;
+    type = ['tv', 'movie', 'ova', 'special', 'ona', 'music'];
   }
+
+  if (title === 'trending') {
+    endPoint = `seasons/now?page=${page}&limit=${limit}&`;
+    toPagination = `${title}?`;
+    type = [];
+  }
+
+  if (title === 'upcoming') {
+    endPoint = `seasons/upcoming?filter=tv&limit=${limit}&`;
+    toPagination = `${title}?`;
+    type = [];
+  }
+
+  if (title === 'search') {
+    endPoint = `anime?q=${query}&page=${page}&sfw&`;
+    toPagination = `search?q=${query}&`;
+    type = [];
+  }
+
+  if (endPoint && endPoint.endsWith('&')) {
+    endPoint = endPoint.slice(0, -1);
+  }
+
+  return { title, endPoint, type, toPagination };
 };
 
 export const getAnimeById = async (id: number) => {

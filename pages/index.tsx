@@ -18,14 +18,17 @@ function Home() {
         <SectionList
           sectionName='TRENDING NOW'
           endpoint={'seasons/now?limit=5'}
+          toLink='trending'
         />
         <SectionList
           sectionName='UPCOMING NEXT SEASON'
           endpoint={'seasons/upcoming?filter=tv&limit=5'}
+          toLink='upcoming'
         />
         <SectionList
-          sectionName='POPULAR ANİMES'
+          sectionName='POPULAR ANIMES'
           endpoint={'top/anime?filter=bypopularity&type=tv&limit=5'}
+          toLink='popular-anime'
         />
       </div>
     </div>

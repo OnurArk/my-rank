@@ -13,9 +13,12 @@ interface Data {
 }
 
 type Props = {
-  path: string;
+  endPoint: string;
+  query: { q?: string };
   imgWidth?: number;
   limit: number;
+  title: string;
+  toPagination: string;
 };
 
 const fetcher = (url: string) => fetch(url).then((res) => res.json());
@@ -23,21 +26,24 @@ const fetcher = (url: string) => fetch(url).then((res) => res.json());
 let linkTo: string;
 
 const ItemsList: FC<Props> = (props) => {
-  linkTo = props.path.replace(/&?page=\d+/, '').trim();
+  linkTo = props.toPagination;
+
+  console.log(props.endPoint);
 
   const {
     data: searchData,
     error,
     isLoading,
-  } = useSWR<Data>(
-    `https://api.jikan.moe/v4/${props.path ? props.path : 'anime'}`,
-    fetcher
-  );
+  } = useSWR<Data>(`https://api.jikan.moe/v4/${props.endPoint}`, fetcher);
+
+  console.log();
 
   if (searchData?.data && searchData.data.length <= 0) {
     return (
       <div className={styles['items-container']}>
-        <p className={styles.noResult}>{`There Is No Result with "" Entery`}</p>
+        <p className={styles.noResult}>{`There Is No Result with "${
+          props.query?.q ? props.query.q : 'Your'
+        }" Entery`}</p>
       </div>
     );
   }
@@ -46,6 +52,7 @@ const ItemsList: FC<Props> = (props) => {
 
   return (
     <div className={styles['items-container']}>
+      {props?.title && <h1>{props.title.toUpperCase()}</h1>}
       <div className={styles.items}>
         {searchData?.data?.map((item) => (
           <Card data={item} key={item.mal_id} width={props.imgWidth} />

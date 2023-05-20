@@ -16,7 +16,9 @@ const Pagination: FC<Props> = (props) => {
 
   const navigatePage = (toPage: number | string) => {
     if (props.linkTo && typeof toPage === 'number') {
-      router.push(`${props?.linkTo}&page=${toPage}`);
+      const updatedLink = props.linkTo.concat(`page=${toPage}`);
+
+      router.push(updatedLink);
     }
   };
 
@@ -32,7 +34,9 @@ const Pagination: FC<Props> = (props) => {
         userEntery <= props.pageNum
       ) {
         console.log(event.key);
-        router.push(`${props?.linkTo}&page=${userEntery}`);
+
+        const updatedLink = props.linkTo.concat(`page=${userEntery}`);
+        router.push(updatedLink);
       } else {
         // to do show some error on input
       }
