@@ -1,4 +1,4 @@
-import { FC, CSSProperties } from 'react';
+import { FC } from 'react';
 import useSWR from 'swr';
 
 import Card from './card/card';
@@ -18,7 +18,7 @@ type Props = {
   imgWidth?: number;
   limit: number;
   title: string;
-  toPagination: string;
+  path: string;
 };
 
 const fetcher = (url: string) => fetch(url).then((res) => res.json());
@@ -26,17 +26,13 @@ const fetcher = (url: string) => fetch(url).then((res) => res.json());
 let linkTo: string;
 
 const ItemsList: FC<Props> = (props) => {
-  linkTo = props.toPagination;
-
-  console.log(props.endPoint);
+  linkTo = props.path;
 
   const {
     data: searchData,
     error,
     isLoading,
   } = useSWR<Data>(`https://api.jikan.moe/v4/${props.endPoint}`, fetcher);
-
-  console.log();
 
   if (searchData?.data && searchData.data.length <= 0) {
     return (
@@ -52,7 +48,19 @@ const ItemsList: FC<Props> = (props) => {
 
   return (
     <div className={styles['items-container']}>
-      {props?.title && <h1>{props.title.toUpperCase()}</h1>}
+      {props?.title && (
+        <h2 className={styles.title}>
+          {props.title.charAt(0).toUpperCase() +
+            props.title.slice(1).toLowerCase() +
+            `${
+              props.query.q
+                ? '-' +
+                  props.query.q.charAt(0).toUpperCase() +
+                  props.query.q.slice(1).toLowerCase()
+                : ''
+            }`}
+        </h2>
+      )}
       <div className={styles.items}>
         {searchData?.data?.map((item) => (
           <Card data={item} key={item.mal_id} width={props.imgWidth} />

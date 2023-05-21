@@ -12,11 +12,10 @@ const SearchPage: FC = () => {
   const router = useRouter();
 
   const { imgWidth, limit } = ResponsiveSize({
-    limits: { point1: 480, point2: 885, point3: 1060 },
+    limits: { point1: 550, point2: 870, point3: 927, point4: 1098 },
   });
-  console.log(router.query);
 
-  const { title, endPoint, type, toPagination } = getSearch({
+  const { title, endPoint, type } = getSearch({
     title:
       typeof router.query.searchId === 'string'
         ? router.query.searchId
@@ -25,7 +24,6 @@ const SearchPage: FC = () => {
     limit: limit,
     query: (router.query.q as string) || '',
   });
-  console.log(endPoint);
 
   return (
     <div>
@@ -37,8 +35,17 @@ const SearchPage: FC = () => {
             title={title}
             endPoint={endPoint}
             query={router.query}
-            toPagination={toPagination}
+            path={router.asPath
+              .replace('/search/', '')
+              .replace(/page=[^&]+(&|$)/, '')}
           />
+        )}
+        {!endPoint && (
+          <div className={styles['items-container']}>
+            <h2 className={styles.noResult}>{`There Is No Result with "${
+              router.query?.searchId ? router.query.searchId : 'Your Enter'
+            }"`}</h2>
+          </div>
         )}
       </div>
     </div>

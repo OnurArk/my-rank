@@ -14,25 +14,25 @@ export const getSearch = (props: Props) => {
 
   if (title === 'popular-anime') {
     endPoint = `top/anime?filter=bypopularity&page=${page}&limit=${limit}&`;
-    toPagination = `${title}?`;
+
     type = ['tv', 'movie', 'ova', 'special', 'ona', 'music'];
   }
 
   if (title === 'trending') {
     endPoint = `seasons/now?page=${page}&limit=${limit}&`;
-    toPagination = `${title}?`;
+
     type = [];
   }
 
   if (title === 'upcoming') {
-    endPoint = `seasons/upcoming?filter=tv&limit=${limit}&`;
-    toPagination = `${title}?`;
+    endPoint = `seasons/upcoming?filter=tv&page=${page}&&limit=${limit}&`;
+
     type = [];
   }
 
   if (title === 'search') {
     endPoint = `anime?q=${query}&page=${page}&sfw&`;
-    toPagination = `search?q=${query}&`;
+
     type = [];
   }
 
@@ -40,7 +40,7 @@ export const getSearch = (props: Props) => {
     endPoint = endPoint.slice(0, -1);
   }
 
-  return { title, endPoint, type, toPagination };
+  return { title, endPoint, type };
 };
 
 export const getAnimeById = async (id: number) => {

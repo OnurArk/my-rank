@@ -18,7 +18,7 @@
 .img-container {
   height: calc(var(--width) * 1.55);
   min-height: calc(var(--width) * 1.55);
-
+  width: 100%;
   overflow: hidden;
 
   position: relative;

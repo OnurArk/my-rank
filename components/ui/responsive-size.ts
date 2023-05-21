@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 
 type ResponseProps = {
-  limits: { point1: number; point2: number; point3: number };
+  limits: { point1: number; point2: number; point3: number; point4: number };
 };
 
 const ResponsiveSize = (props: ResponseProps) => {
@@ -15,20 +15,25 @@ const ResponsiveSize = (props: ResponseProps) => {
       const newWindowWidth = window.innerWidth;
 
       switch (true) {
-        case newWindowWidth < limits.point1:
+        case newWindowWidth <= limits.point1:
           setImgWidth(130);
           setLimit(24);
           break;
-        case newWindowWidth >= limits.point1 && newWindowWidth <= limits.point2:
+        case newWindowWidth > limits.point1 && newWindowWidth <= limits.point2:
           setImgWidth(150);
           setLimit(24);
           break;
 
-        case newWindowWidth >= limits.point2 && newWindowWidth <= limits.point3:
+        case newWindowWidth > limits.point2 && newWindowWidth <= limits.point3:
+          setImgWidth(155);
+          setLimit(24);
+          break;
+
+        case newWindowWidth > limits.point3 && newWindowWidth <= limits.point4:
           setImgWidth(155);
           setLimit(25);
           break;
-        case newWindowWidth > limits.point3:
+        case newWindowWidth > limits.point4:
           setImgWidth(185);
           setLimit(25);
           break;

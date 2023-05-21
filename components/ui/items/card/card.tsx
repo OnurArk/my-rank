@@ -23,8 +23,9 @@ const Card: FC<Props> = (props) => {
           loader={() => props.data?.images.jpg.image_url}
           src={`${props.data.title}.png`}
           alt={props.data?.title || props.data.name}
-          width={props.width ? props.width : 185}
-          height={props.width ? props.width * 1.55 : 185 * 1.55}
+          fill
+          sizes='(max-width: 550px) 130px , (min-width: 551px) 150 , (min-width: 870px) 155,(min-width: 1097px) 185'
+          loading='lazy'
         />
       </div>
       <p className={styles.title}>
