@@ -5,6 +5,7 @@
   align-self: center;
   justify-self: flex-end;
   display: flex;
+  align-items: center;
   gap: 1rem;
 
   font-size: 1.2rem;
@@ -20,11 +21,12 @@
 
   border-radius: 5px;
   cursor: pointer;
+  user-select: none;
 }
 
 .activePag {
   border-bottom: solid rgba(0, 187, 255, 0.704) 1px;
-  box-shadow: 0 -1px 3px rgba(0, 187, 255, 0.704);
+  box-shadow: 0 -1px 3px rgba(51, 201, 255, 0.704);
 }
 
 .ellipsis {
@@ -32,20 +34,49 @@
 }
 
 .input-container {
-  width: 3rem;
+  width: 6rem;
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
-
-  overflow: hidden;
 }
 
-@media (max-width: 28rem) {
+.input {
+  padding: 0.3rem 1rem;
+
+  background-color: #2b2d4299;
+  box-shadow: 0 5px 5px #2b2d42;
+  border-radius: 6px;
+  color: aliceblue;
+  transition: all 0.4s ease;
+}
+
+.input:focus,
+.input:active {
+  border-radius: 6px;
+  transform: scale(1.05);
+  background-color: #2b2d42;
+}
+
+.input::placeholder {
+  color: rgba(240, 248, 255, 0.6);
+}
+
+.icon {
+  color: #2b2d42;
+  cursor: pointer;
+  user-select: none;
+}
+
+.icon:active {
+  color: rgb(7, 133, 172);
+}
+
+@media (max-width: 550px) {
   .pagination-list {
     display: none;
   }
   .input-container {
-    width: 5rem;
+    width: 8rem;
   }
 }

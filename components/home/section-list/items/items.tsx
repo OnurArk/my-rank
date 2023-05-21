@@ -13,7 +13,12 @@ const Items: FC<Props> = (props) => {
   const { arrItems } = props;
 
   const items = arrItems.map((item, index) => (
-    <Item key={item.mal_id} item={item} rank={index + 1} />
+    <Item
+      key={item.mal_id}
+      item={item}
+      rank={index + 1}
+      className={styles.anItem}
+    />
   ));
 
   return <div className={styles['items-container']}>{items}</div>;

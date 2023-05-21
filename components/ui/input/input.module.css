@@ -3,7 +3,6 @@
   outline: none;
 
   width: 100%;
-  padding: var(--padding);
 
   caret-color: #ffffff;
   background-color: #2b2d42;
@@ -12,7 +11,7 @@
 
 .input::placeholder {
   text-align: center;
-  color: rgba(255, 255, 255, 0.73);
+  color: rgba(255, 255, 255, 0.572);
 }
 
 .input[type='number']::-webkit-outer-spin-button,

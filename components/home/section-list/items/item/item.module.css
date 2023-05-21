@@ -1,13 +1,16 @@
 .item-container {
   display: flex;
   flex-direction: column;
+  gap: 0.5rem;
 
   cursor: pointer;
+  overflow: hidden;
 }
 
 .img-container {
-  height: 265px;
-  width: 100%;
+  height: calc(130px * 1.55);
+  min-height: calc(130px * 1.55);
+  width: 130px;
 
   overflow: hidden;
 
@@ -20,7 +23,7 @@
 .title {
   color: #516170;
   text-align: center;
-  max-width: 185px;
+  max-width: 130px;
   text-overflow: ellipsis;
 }
 

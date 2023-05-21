@@ -1,8 +1,11 @@
 import { FC, KeyboardEvent, useRef } from 'react';
 import { useRouter } from 'next/router';
 
-import styles from './pagination.module.css';
 import Input from '../input/input';
+
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faAngleLeft, faAngleRight } from '@fortawesome/free-solid-svg-icons';
+import styles from './pagination.module.css';
 
 type Props = {
   pageNum: number | null;
@@ -43,6 +46,26 @@ const Pagination: FC<Props> = (props) => {
     }
   };
 
+  const navigateForward = () => {
+    if (
+      props.linkTo &&
+      props.currentPage &&
+      props.currentPage !== props.pageNum
+    ) {
+      const updatedLink = props.linkTo.concat(`page=${props.currentPage + 1}`);
+
+      router.push(updatedLink);
+    }
+  };
+
+  const navigateBackward = () => {
+    if (props.linkTo && props.currentPage && props.currentPage > 1) {
+      const updatedLink = props.linkTo.concat(`page=${props.currentPage - 1}`);
+
+      router.push(updatedLink);
+    }
+  };
+
   const generateRange = (start: number, end: number) => {
     return Array.from({ length: end - start + 1 }, (_, index) => start + index);
   };
@@ -80,6 +103,13 @@ const Pagination: FC<Props> = (props) => {
 
   return (
     <ul className={styles.pagination}>
+      {props.pageNum && (
+        <FontAwesomeIcon
+          icon={faAngleLeft}
+          className={styles.icon}
+          onClick={navigateBackward}
+        />
+      )}
       <div className={styles['pagination-list']}>
         {props.pageNum &&
           pages?.map((page, index) => (
@@ -98,16 +128,22 @@ const Pagination: FC<Props> = (props) => {
         <div className={styles['input-container']}>
           <Input
             type='text'
-            placeholder={`/${props.pageNum}`}
+            placeholder={`${props.currentPage} / ${props.pageNum}`}
             name='pageNum'
-            padding={'0.3rem 0'}
             positionText='center'
             ref={inputRef}
             onKeyDown={navigatePageByInput}
-            borderRadius={10}
             autoComplete='off'
+            className={styles.input}
           />
         </div>
+      )}
+      {props.pageNum && (
+        <FontAwesomeIcon
+          icon={faAngleRight}
+          className={styles.icon}
+          onClick={navigateForward}
+        />
       )}
     </ul>
   );

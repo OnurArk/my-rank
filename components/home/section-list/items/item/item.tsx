@@ -8,11 +8,12 @@ import styles from './item.module.css';
 type Props = {
   item: ItemData;
   rank: number;
+  className?: string;
 };
 
 const Item: FC<Props> = (props) => {
   return (
-    <div className={styles['item-container']}>
+    <div className={`${styles['item-container']} ${props.className}`}>
       <div className={styles['img-container']}>
         {props.item.score && <p className={styles.score}>{props.item.score}</p>}
         {props.item.type && <p className={styles.type}>{props.item.type}</p>}
@@ -22,8 +23,8 @@ const Item: FC<Props> = (props) => {
         <Image
           loader={() => props.item.images.jpg.image_url}
           src={`${props.item.title}.png`}
-          width={185}
-          height={265}
+          fill
+          sizes='(max-width: 550px) 130px , (min-width: 551px) 150 , (min-width: 870px) 155,(min-width: 1097px) 185'
           alt={props.item.title ? props.item.title : props.item.name}
         />
       </div>
