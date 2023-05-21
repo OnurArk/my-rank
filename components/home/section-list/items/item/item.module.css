@@ -1,7 +1,6 @@
 .item-container {
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
 
   cursor: pointer;
   overflow: hidden;
@@ -54,4 +53,28 @@
   right: 0;
   bottom: 0;
   background-color: rgba(240, 255, 255, 0.592);
+}
+
+@media (min-width: 550px) {
+  .img-container {
+    height: calc(150px * 1.55);
+    min-height: calc(150px * 1.55);
+    width: 150px;
+  }
+}
+
+@media (min-width: 870px) {
+  .img-container {
+    height: calc(150px * 1.55);
+    min-height: calc(155px * 1.55);
+    width: 155px;
+  }
+}
+
+@media (min-width: 1098px) {
+  .img-container {
+    height: calc(185px * 1.55);
+    min-height: calc(185px * 1.55);
+    width: 185px;
+  }
 }

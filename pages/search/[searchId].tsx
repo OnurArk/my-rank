@@ -42,9 +42,7 @@ const SearchPage: FC = () => {
         )}
         {!endPoint && (
           <div className={styles['items-container']}>
-            <h2 className={styles.noResult}>{`There Is No Result with "${
-              router.query?.searchId ? router.query.searchId : 'Your Enter'
-            }"`}</h2>
+            <h2 className={styles.noResult}>{'Loading...'}</h2>
           </div>
         )}
       </div>

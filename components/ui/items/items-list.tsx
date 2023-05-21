@@ -43,6 +43,7 @@ const ItemsList: FC<Props> = (props) => {
       </div>
     );
   }
+  console.log(searchData);
 
   if (error) return <div>Failed to load</div>;
 

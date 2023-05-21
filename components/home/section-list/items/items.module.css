@@ -5,8 +5,53 @@
   justify-content: center;
   align-items: self-start;
 
-  gap: 1rem;
+  gap: 0.5rem;
 }
 
-.anItem {
+.items-container .anItem:nth-last-child(-n + 3) {
+  display: none;
+}
+
+@media (min-width: 460px) {
+  .items-container .anItem:nth-last-child(-n + 3) {
+    display: block;
+  }
+
+  .items-container .anItem:nth-last-child(-n + 2) {
+    display: none;
+  }
+}
+
+@media (min-width: 550px) {
+  .items-container {
+    gap: 0.8rem;
+  }
+}
+
+@media (min-width: 715px) {
+  .items-container .anItem:nth-last-child(-n + 2) {
+    display: block;
+  }
+
+  .items-container .anItem:nth-last-child(-n + 1) {
+    display: none;
+  }
+}
+
+@media (min-width: 870px) {
+  .items-container {
+    gap: 1.1rem;
+  }
+}
+
+@media (min-width: 930px) {
+  .items-container .anItem:nth-last-child(-n + 1) {
+    display: block;
+  }
+}
+
+@media (min-width: 1098px) {
+  .items-container {
+    gap: 1.3rem;
+  }
 }
