@@ -53,7 +53,11 @@
 
 .input:focus,
 .input:active {
-  border-radius: 6px;
+  transform: scale(1.05);
+  background-color: #2b2d42;
+}
+
+.input:hover {
   transform: scale(1.05);
   background-color: #2b2d42;
 }
