@@ -1,4 +1,5 @@
 import { FC, useEffect, useState } from 'react';
+import Head from 'next/head';
 import { useRouter } from 'next/router';
 
 import ItemsList from '@/components/ui/items/items-list';
@@ -32,6 +33,19 @@ const SearchPage: FC = () => {
 
   return (
     <div>
+      <Head>
+        <title>
+          My Rank -{' '}
+          {title
+            .split(/[-\s]/)
+            .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+            .join(' ')}
+        </title>
+        <meta
+          name='description'
+          content={`${title} list of anime or character`}
+        />
+      </Head>
       <div className={styles['search-container']}>
         {endPoint && router.query.searchId && (
           <ItemsList
