@@ -3,6 +3,7 @@ import useSWR from 'swr';
 
 import Card from './card/card';
 import Pagination from '../pagination/pagination';
+import LoadingImg from '../loading-img/loading-img';
 
 import { ItemData, PaginationData } from '@/models/Item-Type';
 import styles from './items-list.module.css';
@@ -46,6 +47,8 @@ const ItemsList: FC<Props> = (props) => {
 
   if (error) return <div>Failed to load</div>;
 
+  console.log(isLoading);
+
   return (
     <div className={styles['items-container']}>
       {props?.title && (
@@ -66,14 +69,16 @@ const ItemsList: FC<Props> = (props) => {
         </h2>
       )}
       <div className={styles.items}>
-        {searchData?.data?.map((item) => (
-          <Card
-            data={item}
-            key={item.mal_id}
-            width={props.imgWidth}
-            isLoading={isLoading}
-          />
-        ))}
+        {!isLoading &&
+          searchData?.data?.map((item) => (
+            <Card data={item} key={item.mal_id} width={props.imgWidth} />
+          ))}
+
+        {props.limit &&
+          isLoading &&
+          Array.from({ length: props.limit }).map((_, index) => (
+            <LoadingImg key={index} width={props.imgWidth} />
+          ))}
       </div>
       {searchData?.pagination?.last_visible_page &&
         searchData?.pagination?.last_visible_page > 1 && (
