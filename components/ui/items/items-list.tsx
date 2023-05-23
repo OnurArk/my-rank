@@ -51,14 +51,16 @@ const ItemsList: FC<Props> = (props) => {
       {props?.title && (
         <h2 className={styles.title}>
           {props.title
-            .split('-')
+            .split(/[-\s]/)
             .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
             .join(' ') +
             `${
               props.query.q
                 ? ': ' +
-                  props.query.q.charAt(0).toUpperCase() +
-                  props.query.q.slice(1).toLowerCase()
+                  props.query.q
+                    .split(/[-\s]/)
+                    .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+                    .join(' ')
                 : ''
             }`}
         </h2>
