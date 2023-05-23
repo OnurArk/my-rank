@@ -16,8 +16,8 @@
 }
 
 .img-container {
-  height: calc(var(--width) * 1.55);
-  min-height: calc(var(--width) * 1.55);
+  height: calc(var(--width) * 1.41);
+  min-height: calc(var(--width) * 1.41);
   width: 100%;
   overflow: hidden;
 
@@ -32,8 +32,8 @@
   color: rgba(255, 255, 255, 0.775);
 
   position: absolute;
-
   top: -0.3rem;
+  z-index: 10;
 }
 
 .type {

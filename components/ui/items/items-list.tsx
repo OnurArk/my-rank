@@ -43,7 +43,6 @@ const ItemsList: FC<Props> = (props) => {
       </div>
     );
   }
-  console.log(searchData);
 
   if (error) return <div>Failed to load</div>;
 
@@ -51,11 +50,13 @@ const ItemsList: FC<Props> = (props) => {
     <div className={styles['items-container']}>
       {props?.title && (
         <h2 className={styles.title}>
-          {props.title.charAt(0).toUpperCase() +
-            props.title.slice(1).toLowerCase() +
+          {props.title
+            .split('-')
+            .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+            .join(' ') +
             `${
               props.query.q
-                ? '-' +
+                ? ': ' +
                   props.query.q.charAt(0).toUpperCase() +
                   props.query.q.slice(1).toLowerCase()
                 : ''
@@ -64,7 +65,12 @@ const ItemsList: FC<Props> = (props) => {
       )}
       <div className={styles.items}>
         {searchData?.data?.map((item) => (
-          <Card data={item} key={item.mal_id} width={props.imgWidth} />
+          <Card
+            data={item}
+            key={item.mal_id}
+            width={props.imgWidth}
+            isLoading={isLoading}
+          />
         ))}
       </div>
       {searchData?.pagination?.last_visible_page &&

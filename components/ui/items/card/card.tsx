@@ -7,6 +7,7 @@ import styles from './card.module.css';
 type Props = {
   data: ItemData;
   width?: number;
+  isLoading: boolean;
 };
 
 const Card: FC<Props> = (props) => {
@@ -25,7 +26,7 @@ const Card: FC<Props> = (props) => {
           alt={props.data?.title || props.data.name}
           fill
           sizes='(max-width: 550px) 130px , (min-width: 551px) 150 , (min-width: 870px) 155,(min-width: 1097px) 185'
-          loading='lazy'
+          priority
         />
       </div>
       <p className={styles.title}>
