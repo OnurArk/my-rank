@@ -36,8 +36,6 @@ const Pagination: FC<Props> = (props) => {
         userEntery > 0 &&
         userEntery <= props.pageNum
       ) {
-        console.log(event.key);
-
         const updatedLink = props.linkTo.concat(`page=${userEntery}`);
         router.push(updatedLink);
       } else {

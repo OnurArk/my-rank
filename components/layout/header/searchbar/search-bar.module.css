@@ -18,6 +18,7 @@
   position: relative;
   min-width: 13rem;
   width: 70%;
+  user-select: none;
 }
 
 .search-bar {

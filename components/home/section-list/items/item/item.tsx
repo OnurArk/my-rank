@@ -39,10 +39,11 @@ const Item: FC<Props> = (props) => {
         )}
         <Image
           loader={() => props.item.images.jpg.image_url}
-          src={`${props.item.title}.png`}
+          src={`${props.item.title}?mal_id=${props.item?.mal_id}.png`}
+          alt={props.item.title ? props.item.title : props.item.name}
           fill
           sizes='(max-width: 550px) 130px , (min-width: 551px) 150 , (min-width: 870px) 155,(min-width: 1097px) 185'
-          alt={props.item.title ? props.item.title : props.item.name}
+          priority
         />
       </div>
 

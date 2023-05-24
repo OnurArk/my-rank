@@ -14,7 +14,7 @@
   font-size: 0.7rem;
   font-weight: 500;
   cursor: pointer;
-  /* user-select: none; */
+  user-select: none;
 }
 
 .img-container {

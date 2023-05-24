@@ -33,9 +33,7 @@ const SectionList: FC<Props> = (props) => {
           <h4 className={styles.forMore}>See More</h4>
         </Link>
       </div>
-      {!isLoading && !error && data && data.data && (
-        <Items arrItems={data?.data} />
-      )}
+      {!error && <Items arrItems={data?.data} isLoading={isLoading} />}
       {error && <p>{error}</p>}
     </div>
   );

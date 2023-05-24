@@ -9,8 +9,8 @@ type Props = {
 
 const LoadingImg: FC<Props> = (props) => {
   const style: CSSProperties = {
-    height: props.width ? props.width * 1.41 : 'unset',
-    minHeight: props.width ? props.width * 1.41 : 'unset',
+    height: props.width ? props.width * 1.41 : '',
+    minHeight: props.width ? props.width * 1.41 : '',
   };
 
   return (
