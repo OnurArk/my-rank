@@ -11,9 +11,10 @@
   gap: 0.5rem;
 
   color: #424f4ec9;
+  font-size: 0.7rem;
   font-weight: 500;
   cursor: pointer;
-  user-select: none;
+  /* user-select: none; */
 }
 
 .img-container {
@@ -52,4 +53,16 @@
 .title {
   cursor: pointer;
   text-overflow: ellipsis;
+}
+
+@media (min-width: 550px) {
+  .card-container {
+    font-size: 0.8rem;
+  }
+}
+
+@media (min-width: 1098px) {
+  .card-container {
+    font-size: 0.9rem;
+  }
 }

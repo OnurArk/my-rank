@@ -1,3 +1,8 @@
+export type Title = {
+  type: 'Default' | 'Japanese' | 'English';
+  title: string;
+};
+
 export type ItemData = {
   mal_id: number;
   images: {
@@ -6,6 +11,9 @@ export type ItemData = {
     };
   };
   title?: string;
+  title_english?: string;
+  title_synonyms?: string[];
+  titles: Title[];
   name: string;
   type: string;
   score: number;

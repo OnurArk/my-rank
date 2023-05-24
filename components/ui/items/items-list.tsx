@@ -47,8 +47,6 @@ const ItemsList: FC<Props> = (props) => {
 
   if (error) return <div>Failed to load</div>;
 
-  console.log(isLoading);
-
   return (
     <div className={styles['items-container']}>
       {props?.title && (

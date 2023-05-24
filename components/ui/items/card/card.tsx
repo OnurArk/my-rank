@@ -1,7 +1,8 @@
 import { FC, CSSProperties } from 'react';
 import Image from 'next/image';
-import { ItemData } from '@/models/Item-Type';
 
+import { ItemData } from '@/models/Item-Type';
+import { Title } from '@/models/Item-Type';
 import styles from './card.module.css';
 
 type Props = {
@@ -10,6 +11,23 @@ type Props = {
 };
 
 const Card: FC<Props> = (props) => {
+  const titleHandler = (tittleArr: Title[]) => {
+    const englishItem = tittleArr.find(
+      (item) => item.type === 'English' && item.title
+    );
+
+    if (!tittleArr) {
+      return;
+    }
+
+    if (englishItem) {
+      return englishItem.title.replace(/[\[\]]/g, '').trim();
+    } else {
+      return tittleArr?.[0].title.replace(/[\[\]]/g, '').trim();
+    }
+  };
+  const title = titleHandler(props.data.titles);
+
   const rootStyle: CSSProperties = {
     '--width': props.width ? `${props.width}px` : '185px',
   } as CSSProperties;
@@ -36,11 +54,7 @@ const Card: FC<Props> = (props) => {
           </>
         )}
       </div>
-      <p className={styles.title}>
-        {props.data.title
-          ? `${props.data.title.slice(0, 50)}`
-          : props.data.name}
-      </p>
+      <p className={styles.title}>{title ? title : props.data.name}</p>
     </div>
   );
 };
