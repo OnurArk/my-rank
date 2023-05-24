@@ -1,8 +1,7 @@
 import { FC, CSSProperties } from 'react';
 import Image from 'next/image';
 
-import { ItemData } from '@/models/Item-Type';
-import { Title } from '@/models/Item-Type';
+import { ItemData, Title } from '@/models/Item-Type';
 import styles from './card.module.css';
 
 type Props = {

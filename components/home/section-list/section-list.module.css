@@ -2,7 +2,7 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  gap: 1rem;
+  gap: 0.2rem;
 }
 
 .section-top {
@@ -12,14 +12,54 @@
 }
 
 .title {
-  font-size: 1rem;
+  font-size: 0.8rem;
   font-weight: 700;
   color: #516170;
 }
 
 .forMore {
-  font-size: 0.8rem;
+  font-size: 0.7rem;
   color: #a7a7a7;
   cursor: pointer;
   letter-spacing: 0.05rem;
+}
+
+.forMore:hover {
+  color: #516170;
+}
+
+@media (min-width: 550px) {
+  .section-list-container {
+    gap: 0.3rem;
+  }
+  .title {
+    font-size: 0.85rem;
+  }
+  .forMore {
+    font-size: 0.75rem;
+  }
+}
+
+@media (min-width: 870px) {
+  .section-list-container {
+    gap: 0.5rem;
+  }
+  .title {
+    font-size: 0.95rem;
+  }
+  .forMore {
+    font-size: 0.85rem;
+  }
+}
+
+@media (min-width: 1098px) {
+  .section-list-container {
+    gap: 0.7rem;
+  }
+  .title {
+    font-size: 1.1rem;
+  }
+  .forMore {
+    font-size: 0.9rem;
+  }
 }

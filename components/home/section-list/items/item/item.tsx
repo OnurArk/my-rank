@@ -1,7 +1,7 @@
 import { FC } from 'react';
 import Image from 'next/image';
 
-import { ItemData } from '@/models/Item-Type';
+import { ItemData, Title } from '@/models/Item-Type';
 
 import styles from './item.module.css';
 
@@ -12,6 +12,23 @@ type Props = {
 };
 
 const Item: FC<Props> = (props) => {
+  const titleHandler = (tittleArr: Title[]) => {
+    const englishItem = tittleArr.find(
+      (item) => item.type === 'English' && item.title
+    );
+
+    if (!tittleArr) {
+      return;
+    }
+
+    if (englishItem) {
+      return englishItem.title.replace(/[\[\]]/g, '').trim();
+    } else {
+      return tittleArr?.[0].title.replace(/[\[\]]/g, '').trim();
+    }
+  };
+  const title = titleHandler(props.item.titles);
+
   return (
     <div className={`${styles['item-container']} ${props.className}`}>
       <div className={styles['img-container']}>
@@ -29,10 +46,10 @@ const Item: FC<Props> = (props) => {
         />
       </div>
 
-      {props.item.title && (
-        <p className={styles.title}>{props.item.title.slice(0, 50)}</p>
+      {props.item.title && <p className={styles.title}>{title}</p>}
+      {!props.item.title && props.item.name && (
+        <p className={styles.title}>{props.item.name}</p>
       )}
-      {props.item.name && <p className={styles.title}>{props.item.name}</p>}
     </div>
   );
 };

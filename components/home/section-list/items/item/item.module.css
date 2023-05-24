@@ -7,6 +7,8 @@
   cursor: pointer;
   user-select: none;
   overflow: hidden;
+
+  font-size: 0.7rem;
 }
 
 .img-container {
@@ -61,6 +63,9 @@
 }
 
 @media (min-width: 550px) {
+  .item-container {
+    font-size: 0.8rem;
+  }
   .img-container {
     height: calc(150px * 1.41);
     min-height: calc(150px * 1.41);
@@ -72,6 +77,9 @@
 }
 
 @media (min-width: 870px) {
+  .item-container {
+    font-size: 0.9rem;
+  }
   .img-container {
     height: calc(150px * 1.41);
     min-height: calc(155px * 1.41);
@@ -83,6 +91,9 @@
 }
 
 @media (min-width: 1098px) {
+  .item-container {
+    font-size: 1rem;
+  }
   .img-container {
     height: calc(185px * 1.41);
     min-height: calc(185px * 1.41);
