@@ -1,0 +1,27 @@
+.detail-page-container {
+  min-height: calc(100vh - 4.5rem - 3.5rem - 3rem);
+
+  margin-top: 3rem;
+  background: #edf1f5;
+}
+
+.detail-container {
+  padding: 0 2rem;
+  width: 100%;
+  min-height: calc(100vh - 4.5rem - 3.5rem - 3rem - 7rem);
+
+  background: #edf1f5;
+  position: absolute;
+  bottom: 0rem;
+  z-index: 100;
+}
+
+@media (min-width: 30rem) {
+  .detail-page-container {
+    margin-top: unset;
+    min-height: calc(100vh - 4.5rem - 3.5rem);
+  }
+  .detail-container {
+    min-height: calc(100vh - 4.5rem - 3.5rem - 10rem);
+  }
+}

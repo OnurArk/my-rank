@@ -12,6 +12,9 @@
   text-align: center;
   font-size: 0.8rem;
   font-weight: 500;
+
+  position: relative;
+  z-index: 1000;
 }
 
 @media (min-width: 37rem) {

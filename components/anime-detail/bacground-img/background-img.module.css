@@ -1,0 +1,10 @@
+.img-container {
+  background-color: aliceblue;
+  position: absolute;
+  inset: 0;
+
+  background-image: url(/images/search-background-original.jpg);
+  background-size: 70%;
+
+  filter: grayscale(80%);
+}
