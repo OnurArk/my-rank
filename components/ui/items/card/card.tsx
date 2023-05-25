@@ -1,5 +1,6 @@
 import { FC, CSSProperties } from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 
 import { ItemData, Title } from '@/models/Item-Type';
 import styles from './card.module.css';
@@ -32,7 +33,14 @@ const Card: FC<Props> = (props) => {
   } as CSSProperties;
 
   return (
-    <div className={styles['card-container']} style={rootStyle}>
+    <Link
+      href={{
+        pathname: '/anime/[animeId]',
+        query: { animeId: props.data.mal_id },
+      }}
+      className={styles['card-container']}
+      style={rootStyle}
+    >
       <div className={styles['img-container']}>
         {props.data?.images.jpg.image_url && (
           <>
@@ -54,7 +62,7 @@ const Card: FC<Props> = (props) => {
         )}
       </div>
       <p className={styles.title}>{title ? title : props.data.name}</p>
-    </div>
+    </Link>
   );
 };
 

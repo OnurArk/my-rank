@@ -31,6 +31,7 @@ export const getSearch = (props: Props) => {
   }
 
   if (title === 'search') {
+    // To DO  Moda göre chrackter ve ya anime
     endPoint = `anime?q=${query}&page=${page}&sfw&`;
 
     type = [];
