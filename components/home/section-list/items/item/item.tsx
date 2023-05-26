@@ -42,7 +42,7 @@ const Item: FC<Props> = (props) => {
           src={`${props.item.title}?mal_id=${props.item?.mal_id}.png`}
           alt={props.item.title ? props.item.title : props.item.name}
           fill
-          sizes='(max-width: 550px) 130px , (min-width: 551px) 150 , (min-width: 870px) 155,(min-width: 1097px) 185'
+          sizes='(max-width: 550px) 130px , (min-width: 551px) 150px , (min-width: 870px) 155px,(min-width: 1097px) 185px'
           priority
         />
       </div>
