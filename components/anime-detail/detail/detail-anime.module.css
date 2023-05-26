@@ -59,6 +59,17 @@
 
 .dynamic-panel {
   background-color: aqua;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.panel-title {
+  text-align: center;
+  font-weight: 500;
+  border-bottom: 1px solid black;
+  background-color: black;
+  color: aliceblue;
 }
 
 @media (min-width: 592px) {

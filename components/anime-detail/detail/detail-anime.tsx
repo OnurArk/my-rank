@@ -62,8 +62,8 @@ const DetailAnime: FC<Props> = (props) => {
           <button onClick={openEpisodePanelHandler}>Episodes</button>
         </div>
         <div className={styles['dynamic-panel']}>
-          {isPanelAbout && <p>about</p>}
-          {!isPanelAbout && <p>episodes</p>}
+          {isPanelAbout && <h3 className={styles['panel-title']}>ABOUT</h3>}
+          {!isPanelAbout && <h3 className={styles['panel-title']}>EPİSODES</h3>}
         </div>
       </div>
     </div>
