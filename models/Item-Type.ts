@@ -3,6 +3,11 @@ export type Title = {
   title: string;
 };
 
+export type Streaming = {
+  name: string;
+  url: string;
+};
+
 export type ItemData = {
   mal_id: number;
   images: {
@@ -24,6 +29,7 @@ export type ItemData = {
   episodes?: number;
   aired?: { from: Date; to: Date };
   synopsis?: string;
+  streaming?: Streaming[];
 };
 
 export type PaginationData = {

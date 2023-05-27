@@ -1,5 +1,6 @@
 import { FC, useState } from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 
 import { ItemData, Title } from '@/models/Item-Type';
 
@@ -62,8 +63,33 @@ const DetailAnime: FC<Props> = (props) => {
           <button onClick={openEpisodePanelHandler}>Episodes</button>
         </div>
         <div className={styles['dynamic-panel']}>
-          {isPanelAbout && <h3 className={styles['panel-title']}>ABOUT</h3>}
-          {!isPanelAbout && <h3 className={styles['panel-title']}>EPİSODES</h3>}
+          {isPanelAbout && (
+            <div className={styles['panel-title-container']}>
+              <h3 className={styles['panel-title']}>ABOUT</h3>
+              <p>
+                Where to Watch:{' '}
+                {props.data.streaming?.map((stream, index) => (
+                  <Link
+                    href={stream.url}
+                    key={index}
+                    target='_blank'
+                    className={styles.streamLinks}
+                  >
+                    {stream.name}
+                  </Link>
+                ))}
+              </p>
+            </div>
+          )}
+          {!isPanelAbout && (
+            <div className={styles['panel-title-container']}>
+              <h3 className={styles['panel-title']}>EPİSODES</h3>
+
+              <p></p>
+              <p></p>
+              <p></p>
+            </div>
+          )}
         </div>
       </div>
     </div>
