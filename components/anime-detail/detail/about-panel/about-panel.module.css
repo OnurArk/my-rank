@@ -1,0 +1,85 @@
+.panel-about-container {
+  padding: 1rem;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.sideTitle {
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.where-towatch-container {
+  width: 100%;
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.links {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+
+  font-size: 0.8rem;
+}
+
+.streamLink {
+  --padding: 0.4rem;
+  --outerWitdh: 1.3px;
+  appearance: none;
+  text-decoration: none;
+  border: none;
+
+  padding: var(--padding);
+
+  border-radius: 10px;
+
+  background-color: #2b2d42;
+  color: aliceblue;
+
+  text-align: center;
+}
+
+.streamLink:hover {
+  padding: calc(var(--padding) - var(--outerWitdh));
+
+  box-shadow: 0 0 0 calc(var(--outerWitdh) + calc(var(--outerWitdh) / 2))
+    #2b2d42;
+  border: var(--outerWitdh) solid #ffffff;
+
+  background-color: #2b2d42;
+}
+
+@media (min-width: 592px) {
+  .sideTitle {
+    font-size: 1.1rem;
+  }
+
+  .streamLink {
+    --padding: 0.5rem;
+    --outerWitdh: 2px;
+  }
+  .links {
+    font-size: 0.9rem;
+  }
+}
+
+@media (min-width: 1088px) {
+  .sideTitle {
+    font-size: 1.2rem;
+  }
+  .streamLink {
+    --padding: 0.7rem;
+    --outerWitdh: 2px;
+  }
+  .links {
+    font-size: 1rem;
+  }
+}
