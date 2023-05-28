@@ -9,6 +9,9 @@ export type Streaming = {
 };
 
 export type ItemData = {
+  aired?: { from?: Date; to?: Date };
+  approved?: boolean;
+  duration: string;
   mal_id: number;
   images: {
     jpg: {
@@ -24,10 +27,9 @@ export type ItemData = {
   name: string;
   type: string;
   score: number;
+  rank: number;
   favorites?: number;
-  approved?: boolean;
   episodes?: number;
-  aired?: { from: Date; to: Date };
   synopsis?: string;
   streaming?: Streaming[];
 };

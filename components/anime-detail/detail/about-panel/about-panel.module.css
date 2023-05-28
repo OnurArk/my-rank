@@ -3,16 +3,20 @@
 
   display: flex;
   flex-direction: column;
-  align-items: center;
+  gap: 1.2rem;
 }
 
 .sideTitle {
   font-size: 1rem;
   font-weight: 500;
+
+  user-select: none;
+}
+.sideText {
+  font-size: 0.8rem;
 }
 
-.where-towatch-container {
-  width: 100%;
+.simple-side-container {
   display: flex;
   justify-content: left;
   align-items: center;
@@ -26,16 +30,13 @@
   align-items: center;
   flex-wrap: wrap;
   gap: 0.5rem;
-
-  font-size: 0.8rem;
 }
 
 .streamLink {
   --padding: 0.4rem;
-  --outerWitdh: 1.3px;
+  --outerWitdh: 2px;
   appearance: none;
   text-decoration: none;
-  border: none;
 
   padding: var(--padding);
 
@@ -45,16 +46,22 @@
   color: aliceblue;
 
   text-align: center;
+  user-select: none;
 }
 
 .streamLink:hover {
   padding: calc(var(--padding) - var(--outerWitdh));
 
-  box-shadow: 0 0 0 calc(var(--outerWitdh) + calc(var(--outerWitdh) / 2))
-    #2b2d42;
+  box-shadow: 0 0 0 calc(var(--outerWitdh)) #2b2d42;
   border: var(--outerWitdh) solid #ffffff;
 
   background-color: #2b2d42;
+}
+
+.duration-container {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
 }
 
 @media (min-width: 592px) {
@@ -64,9 +71,9 @@
 
   .streamLink {
     --padding: 0.5rem;
-    --outerWitdh: 2px;
   }
-  .links {
+
+  .sideText {
     font-size: 0.9rem;
   }
 }
@@ -77,9 +84,8 @@
   }
   .streamLink {
     --padding: 0.7rem;
-    --outerWitdh: 2px;
   }
-  .links {
+  .sideText {
     font-size: 1rem;
   }
 }
