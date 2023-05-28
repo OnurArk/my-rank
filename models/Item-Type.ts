@@ -3,6 +3,13 @@ export type Title = {
   title: string;
 };
 
+export type Genres = {
+  mal_id: number;
+  name: string;
+  type: string;
+  url: string;
+};
+
 export type Streaming = {
   name: string;
   url: string;
@@ -10,6 +17,7 @@ export type Streaming = {
 
 export type ItemData = {
   aired?: { from?: Date; to?: Date };
+  airing?: boolean;
   approved?: boolean;
   duration: string;
   mal_id: number;
@@ -32,6 +40,7 @@ export type ItemData = {
   episodes?: number;
   synopsis?: string;
   streaming?: Streaming[];
+  genres: Genres[];
 };
 
 export type PaginationData = {

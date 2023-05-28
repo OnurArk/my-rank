@@ -51,6 +51,9 @@
 }
 
 .buttons-container {
+  padding: 1rem;
+  border-bottom: 1px solid #2b2d42;
+
   display: flex;
   justify-content: center;
 

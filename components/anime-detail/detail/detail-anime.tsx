@@ -69,9 +69,9 @@ const DetailAnime: FC<Props> = (props) => {
             <div className={styles['panel-title-container']}>
               <h3 className={styles['panel-title']}>EPİSODES</h3>
 
-              <p></p>
-              <p></p>
-              <p></p>
+              <p>a</p>
+              <p>s</p>
+              <p>d</p>
             </div>
           )}
         </div>
