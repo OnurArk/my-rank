@@ -1,11 +1,11 @@
 import { FC, useState } from 'react';
 import Image from 'next/image';
-import Link from 'next/link';
+
+import Button from '@/components/ui/button/button';
+import AboutPanel from './about-panel/about-panel';
 
 import { ItemData, Title } from '@/models/Item-Type';
-
 import styles from './detail-anime.module.css';
-import AboutPanel from './about-panel/about-panel';
 
 type Props = {
   data: ItemData;
@@ -60,20 +60,13 @@ const DetailAnime: FC<Props> = (props) => {
 
       <div className={styles.layout2}>
         <div className={styles['buttons-container']}>
-          <button onClick={openAboutPanelHandler}>About</button>
-          <button onClick={openEpisodePanelHandler}>Episodes</button>
+          <Button onClick={openAboutPanelHandler}>About</Button>
+          <Button onClick={openEpisodePanelHandler}>Episodes</Button>
         </div>
+
         <div className={styles['dynamic-panel']}>
           {isPanelAbout && <AboutPanel data={props.data} />}
-          {!isPanelAbout && (
-            <div className={styles['panel-title-container']}>
-              <h3 className={styles['panel-title']}>EPİSODES</h3>
-
-              <p>a</p>
-              <p>s</p>
-              <p>d</p>
-            </div>
-          )}
+          {!isPanelAbout && <div>Episode kısmı</div>}
         </div>
       </div>
     </div>

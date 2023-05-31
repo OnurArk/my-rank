@@ -50,11 +50,12 @@
   cursor: pointer;
 }
 
-.link:hover {
-  padding: calc(var(--padding) - var(--outerWitdh));
+.link:hover,
+.link:focus {
+  padding: var(--padding);
 
-  box-shadow: 0 0 0 calc(var(--outerWitdh)) #2b2d42;
-  border: var(--outerWitdh) solid #ffffff;
+  box-shadow: 0 0 0 calc(var(--outerWitdh)) #ffffff,
+    0 0 0 calc(var(--outerWitdh) * 2) #2b2d42;
 
   background-color: #2b2d42;
 }

@@ -1,0 +1,26 @@
+.btn {
+  appearance: none;
+  border: none;
+  position: relative;
+
+  border-radius: 10px;
+  padding: 0.8rem;
+
+  background-color: rgb(18, 18, 38);
+  color: aliceblue;
+  cursor: pointer;
+  overflow: hidden;
+}
+
+.bottomLight {
+  width: 30%;
+
+  box-shadow: 0 0 10px 10px rgb(169, 169, 169);
+  border-bottom: 1px solid rgb(255, 255, 255);
+
+  position: absolute;
+  bottom: 0;
+  right: 50%;
+  transform: translateX(50%);
+  z-index: 10;
+}
