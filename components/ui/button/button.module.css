@@ -15,7 +15,7 @@
 .bottomLight {
   width: 30%;
 
-  border-bottom: 1px solid rgb(255, 255, 255);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.688);
   border-radius: 5px;
 
   position: absolute;
@@ -28,5 +28,5 @@
 }
 
 .btn:hover .bottomLight {
-  box-shadow: 0 0 10px 10px rgb(169, 169, 169);
+  box-shadow: 0 0 10px 10px rgba(169, 169, 169, 0.736);
 }
