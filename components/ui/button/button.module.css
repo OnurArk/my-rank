@@ -15,12 +15,18 @@
 .bottomLight {
   width: 30%;
 
-  box-shadow: 0 0 10px 10px rgb(169, 169, 169);
   border-bottom: 1px solid rgb(255, 255, 255);
+  border-radius: 5px;
 
   position: absolute;
   bottom: 0;
-  right: 50%;
-  transform: translateX(50%);
+  left: 50%;
+  transform: translateX(-50%);
   z-index: 10;
+
+  transition: box-shadow 0.3s ease;
+}
+
+.btn:hover .bottomLight {
+  box-shadow: 0 0 10px 10px rgb(169, 169, 169);
 }
