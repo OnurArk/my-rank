@@ -11,28 +11,27 @@ import styles from './button.module.css';
 
 type PropsButton = ComponentPropsWithRef<'button'>;
 
-let styleLight: CSSProperties;
-
 const Button: FC<PropsButton> = forwardRef((props, ref) => {
   const [lightLeft, setLightLeft] = useState<any>();
+  const [lightTop, setLightTop] = useState<any>();
 
   const handleMouseMove = (event: MouseEvent<HTMLButtonElement>) => {
-    const { clientX } = event;
+    const { clientX, clientY } = event;
 
     const buttonRect = event.currentTarget.getBoundingClientRect();
-    const buttonLeft = buttonRect.left;
+    const buttonLeft = buttonRect?.left;
+    const buttonTop = buttonRect?.top;
 
     const newLightLeft = clientX - buttonLeft;
-    console.log(newLightLeft);
+    const newLİghtTop = clientY - buttonTop;
+
     setLightLeft(newLightLeft);
+    setLightTop(newLİghtTop);
   };
 
   const styleLight: CSSProperties = {
     left: lightLeft,
-  };
-
-  const handleOnMouseLeave = () => {
-    setLightLeft(null);
+    top: lightTop,
   };
 
   return (
@@ -41,9 +40,8 @@ const Button: FC<PropsButton> = forwardRef((props, ref) => {
       className={`${props.className} ${styles.btn}`}
       ref={ref}
       onMouseMove={handleMouseMove}
-      onMouseLeave={handleOnMouseLeave}
     >
-      {props.children}
+      <span className={styles.text}>{props.children}</span>
       <div className={styles.bottomLight} style={styleLight} />
     </button>
   );

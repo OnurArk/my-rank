@@ -1,10 +1,12 @@
 .btn {
+  --padding: 0.8rem;
+
   appearance: none;
   border: none;
   position: relative;
 
   border-radius: 10px;
-  padding: 0.8rem;
+  padding: var(--padding);
 
   background-color: rgb(18, 18, 38);
   color: aliceblue;
@@ -12,21 +14,28 @@
   overflow: hidden;
 }
 
+.text {
+  text-align: center;
+  position: relative;
+  z-index: 15;
+}
+
 .bottomLight {
   width: 30%;
 
-  border-bottom: 1px solid rgba(255, 255, 255, 0.688);
+  /* border-bottom: 1px solid rgba(255, 245, 160, 0.8); */
   border-radius: 5px;
 
   position: absolute;
-  bottom: 0;
+
   left: 50%;
-  transform: translateX(-50%);
+  top: 50%;
+  transform: translate(-50%, -50%);
   z-index: 10;
 
-  transition: box-shadow 0.3s ease;
+  transition: box-shadow 0.5s ease;
 }
 
 .btn:hover .bottomLight {
-  box-shadow: 0 0 10px 10px rgba(169, 169, 169, 0.736);
+  box-shadow: 0 0 15px calc(var(--padding) / 1.5) rgba(255, 255, 255, 0.6);
 }
