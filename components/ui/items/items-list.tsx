@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { FC, useEffect } from 'react';
 import useSWR from 'swr';
 
 import Card from './card/card';
@@ -22,7 +22,12 @@ type Props = {
   path: string;
 };
 
-const fetcher = (url: string) => fetch(url).then((res) => res.json());
+const fetcher = (url: string) =>
+  fetch(url).then((res) =>
+    res.ok
+      ? res.json()
+      : Promise.reject({ status: res.status, message: res.statusText })
+  );
 
 let linkTo: string;
 
@@ -33,7 +38,15 @@ const ItemsList: FC<Props> = (props) => {
     data: searchData,
     error,
     isLoading,
+    mutate,
   } = useSWR<Data>(`https://api.jikan.moe/v4/${props.endPoint}`, fetcher);
+
+  useEffect(() => {
+    if (error && error.status === 429) {
+      const timeout = setTimeout(() => mutate(), 3000);
+      return () => clearTimeout(timeout);
+    }
+  }, [error, mutate]);
 
   if (searchData?.data && searchData.data.length <= 0) {
     return (

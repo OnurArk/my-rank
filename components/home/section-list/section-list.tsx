@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { FC, useEffect } from 'react';
 import Link from 'next/link';
 import useSWR from 'swr';
 
@@ -17,13 +17,27 @@ interface Data {
   data: ItemData[];
 }
 
-const fetcher = (url: string) => fetch(url).then((res) => res.json());
+const fetcher = (url: string) =>
+  fetch(url).then((res) =>
+    res.ok
+      ? res.json()
+      : Promise.reject({ status: res.status, message: res.statusText })
+  );
 
 const SectionList: FC<Props> = (props) => {
-  const { data, error, isLoading } = useSWR<Data>(
+  const { data, error, isLoading, mutate } = useSWR<Data>(
     `https://api.jikan.moe/v4/${props.endpoint}`,
     fetcher
   );
+
+  useEffect(() => {
+    if (error && error.status === 429) {
+      const timeout = setTimeout(() => mutate(), 3000);
+      return () => clearTimeout(timeout);
+    }
+  }, [error, mutate]);
+
+  console.log(error);
 
   return (
     <div className={styles['section-list-container']}>
@@ -33,8 +47,10 @@ const SectionList: FC<Props> = (props) => {
           <h4 className={styles.forMore}>See More</h4>
         </Link>
       </div>
-      {!error && <Items arrItems={data?.data} isLoading={isLoading} />}
-      {error && <p>{error}</p>}
+      {(!error || error.status === 429) && (
+        <Items arrItems={data?.data} isLoading={isLoading} />
+      )}
+      {error && error.status !== 429 && <p>{error.message}</p>}
     </div>
   );
 };

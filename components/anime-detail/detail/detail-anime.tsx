@@ -26,6 +26,8 @@ const DetailAnime: FC<Props> = (props) => {
     }
   };
 
+  console.log(props.data);
+
   const titleHandler = (tittleArr: Title[]) => {
     const englishItem = tittleArr.find(
       (item) => item.type === 'English' && item.title
@@ -69,6 +71,8 @@ const DetailAnime: FC<Props> = (props) => {
           {!isPanelAbout && <div>Episode kısmı</div>}
         </div>
       </div>
+
+      <div className={styles.layout3}>ss</div>
     </div>
   );
 };

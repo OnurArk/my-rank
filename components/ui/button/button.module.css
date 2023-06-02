@@ -24,7 +24,7 @@
   width: 30%;
 
   /* border-bottom: 1px solid rgba(255, 245, 160, 0.8); */
-  border-radius: 5px;
+  border-radius: 15px;
 
   position: absolute;
 
@@ -37,5 +37,5 @@
 }
 
 .btn:hover .bottomLight {
-  box-shadow: 0 0 15px calc(var(--padding) / 1.5) rgba(255, 255, 255, 0.6);
+  box-shadow: 0 0 15px calc(var(--padding) / 1.2) rgba(255, 255, 255, 0.6);
 }

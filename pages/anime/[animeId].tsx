@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { FC, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import useSWR from 'swr';
 
@@ -24,10 +24,20 @@ const DetailPage: FC<Props> = (props) => {
     data: animeData,
     error,
     isLoading,
+    mutate,
   } = useSWR(
     `https://api.jikan.moe/v4/anime/${router.query.animeId}/full`,
     fetcher
   );
+
+  useEffect(() => {
+    if (error && error.status === 429) {
+      const timeout = setTimeout(() => mutate(), 3000);
+      return () => clearTimeout(timeout);
+    }
+  }, [error, mutate]);
+
+  console.log(error);
 
   console.log(animeData);
   console.log(error);
