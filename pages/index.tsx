@@ -30,6 +30,11 @@ function Home() {
           endpoint={'top/anime?filter=bypopularity&type=tv&limit=5'}
           toLink='popular-anime'
         />
+        <SectionList
+          sectionName='TOP CHARACTERS'
+          endpoint={'top/characters?filter=bypopularity&type=tv&limit=5'}
+          toLink='top-characters'
+        />
       </div>
     </div>
   );

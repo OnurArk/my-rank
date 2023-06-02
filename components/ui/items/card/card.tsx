@@ -12,7 +12,7 @@ type Props = {
 
 const Card: FC<Props> = (props) => {
   const titleHandler = (tittleArr: Title[]) => {
-    const englishItem = tittleArr.find(
+    const englishItem = tittleArr?.find(
       (item) => item.type === 'English' && item.title
     );
 

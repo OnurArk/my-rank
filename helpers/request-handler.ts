@@ -18,6 +18,12 @@ export const getSearch = (props: Props) => {
     type = ['tv', 'movie', 'ova', 'special', 'ona', 'music'];
   }
 
+  if (title === 'top-characters') {
+    endPoint = `top/characters?filter=bypopularity&page=${page}&limit=${limit}&`;
+
+    type = [];
+  }
+
   if (title === 'trending') {
     endPoint = `seasons/now?page=${page}&limit=${limit}&`;
 

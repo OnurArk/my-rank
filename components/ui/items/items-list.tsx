@@ -58,7 +58,7 @@ const ItemsList: FC<Props> = (props) => {
     );
   }
 
-  if (error) return <div>Failed to load</div>;
+  if (error && error.status !== 429) return <div>Failed to load</div>; // to do better error ui
 
   return (
     <div className={styles['items-container']}>

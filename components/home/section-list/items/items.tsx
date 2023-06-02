@@ -14,6 +14,7 @@ type Props = {
 
 const Items: FC<Props> = (props) => {
   const { arrItems, isLoading } = props;
+  console.log(arrItems);
 
   const items = arrItems?.map((item, index) => (
     <Item
