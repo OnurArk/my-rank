@@ -26,7 +26,9 @@ const DetailPage: FC<Props> = (props) => {
     isLoading,
     mutate,
   } = useSWR(
-    `https://api.jikan.moe/v4/anime/${router.query.animeId}/full`,
+    router.query.animeId
+      ? `https://api.jikan.moe/v4/anime/${router.query.animeId}/full`
+      : null,
     fetcher
   );
 
@@ -36,11 +38,6 @@ const DetailPage: FC<Props> = (props) => {
       return () => clearTimeout(timeout);
     }
   }, [error, mutate]);
-
-  console.log(error);
-
-  console.log(animeData);
-  console.log(error);
 
   return (
     <div className={styles['detail-page-container']}>

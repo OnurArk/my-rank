@@ -37,8 +37,6 @@ const SectionList: FC<Props> = (props) => {
     }
   }, [error, mutate]);
 
-  console.log(error);
-
   return (
     <div className={styles['section-list-container']}>
       <div className={styles['section-top']}>

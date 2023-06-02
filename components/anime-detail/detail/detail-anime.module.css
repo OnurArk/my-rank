@@ -60,6 +60,15 @@
   gap: 2rem;
 }
 
+.section {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+  background-color: gray;
+}
+
 @media (min-width: 592px) {
   .detail-anime-container {
     --width: 185px;

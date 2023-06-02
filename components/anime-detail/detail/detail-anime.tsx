@@ -3,6 +3,7 @@ import Image from 'next/image';
 
 import Button from '@/components/ui/button/button';
 import AboutPanel from './about-panel/about-panel';
+import Carousel from '@/components/ui/carousel/carousel';
 
 import { ItemData, Title } from '@/models/Item-Type';
 import styles from './detail-anime.module.css';
@@ -26,8 +27,6 @@ const DetailAnime: FC<Props> = (props) => {
     }
   };
 
-  console.log(props.data);
-
   const titleHandler = (tittleArr: Title[]) => {
     const englishItem = tittleArr.find(
       (item) => item.type === 'English' && item.title
@@ -49,17 +48,18 @@ const DetailAnime: FC<Props> = (props) => {
     <div className={styles['detail-anime-container']}>
       <div className={styles.layout1}>
         <div className={styles['img-container']}>
-          <Image
-            loader={() => props.data?.images.jpg.large_image_url}
-            src={`${props.data?.title}?mal_id=${props.data?.mal_id}.png`}
-            alt={props.data?.title || props.data?.name}
-            fill
-            sizes='(max-width: 591px) 200px , (min-width: 592px) 185px ,(min-width: 1088px) 230px'
-          />
+          {props.data?.images?.jpg.large_image_url && (
+            <Image
+              loader={() => props.data?.images?.jpg.large_image_url}
+              src={`${props.data?.title}?mal_id=${props.data?.mal_id}.png`}
+              alt={props.data?.title || props.data?.name}
+              fill
+              sizes='(max-width: 591px) 200px , (min-width: 592px) 185px ,(min-width: 1088px) 230px'
+            />
+          )}
         </div>
         <h2 className={styles.title}>{title}</h2>
       </div>
-
       <div className={styles.layout2}>
         <div className={styles['buttons-container']}>
           <Button onClick={openAboutPanelHandler}>About</Button>
@@ -72,7 +72,11 @@ const DetailAnime: FC<Props> = (props) => {
         </div>
       </div>
 
-      <div className={styles.layout3}>ss</div>
+      <div className={styles.layout3}>
+        <div className={styles.section}>
+          {props.data && <Carousel mal_id={props.data.mal_id} type={'anime'} />}
+        </div>
+      </div>
     </div>
   );
 };

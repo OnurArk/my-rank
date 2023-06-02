@@ -15,11 +15,26 @@ export type Streaming = {
   url: string;
 };
 
+// relations
+
+export type Entry = {
+  mal_id: number;
+  name: string;
+  type: string;
+};
+
+export type Relations = {
+  relation: string;
+  entry: Entry[];
+};
+
+// an anime
+
 export type ItemData = {
   aired?: { from?: Date; to?: Date };
   airing?: boolean;
   approved?: boolean;
-  duration: string;
+  duration?: string;
   mal_id: number;
   images: {
     jpg: {
@@ -40,7 +55,8 @@ export type ItemData = {
   episodes?: number;
   synopsis?: string;
   streaming?: Streaming[];
-  genres: Genres[];
+  genres?: Genres[];
+  relations?: Relations[];
 };
 
 export type PaginationData = {
