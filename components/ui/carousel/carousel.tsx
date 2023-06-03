@@ -1,7 +1,11 @@
-import { FC, useEffect } from 'react';
+import { FC, useEffect, useState } from 'react';
 import useSWR from 'swr';
 
 import CarouselItem from './carouselItem/carouselItem';
+import DisplayedItemHandler from './carouselItem/displayedItemHandler';
+
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faAngleLeft, faAngleRight } from '@fortawesome/free-solid-svg-icons';
 
 import styles from './carousel.module.css';
 
@@ -32,6 +36,8 @@ const fetcher = (url: string) =>
   );
 
 const Carousel: FC<Props> = (props) => {
+  const [arrLength, setArrLength] = useState<number>();
+
   const {
     data: recomentData,
     error,
@@ -42,6 +48,15 @@ const Carousel: FC<Props> = (props) => {
     fetcher
   );
 
+  const { startSlice, endSlice, forwardHandler, backwardHandler } =
+    DisplayedItemHandler({ arrLength });
+
+  useEffect(() => {
+    if (recomentData) {
+      setArrLength(recomentData?.data.length);
+    }
+  }, [recomentData]);
+
   useEffect(() => {
     if (error && error.status === 429) {
       const timeout = setTimeout(() => mutate(), 3000);
@@ -49,15 +64,18 @@ const Carousel: FC<Props> = (props) => {
     }
   }, [error, mutate]);
 
-  console.log(recomentData);
-
   return (
     <div className={styles['section-container']}>
-      <h3>People Also Watched</h3>
+      <h3 className={styles.title}>People Also Watched</h3>
       <div className={styles['carousel-container']}>
+        <FontAwesomeIcon
+          className={styles.icon}
+          icon={faAngleLeft}
+          onClick={backwardHandler}
+        />
         {recomentData &&
           recomentData?.data
-            ?.slice(0, 8)
+            ?.slice(startSlice, endSlice)
             .map((item: Recommendations) => (
               <CarouselItem
                 key={item.entry.mal_id}
@@ -66,6 +84,11 @@ const Carousel: FC<Props> = (props) => {
                 title={item.entry.title}
               />
             ))}
+        <FontAwesomeIcon
+          className={styles.icon}
+          icon={faAngleRight}
+          onClick={forwardHandler}
+        />
       </div>
     </div>
   );
