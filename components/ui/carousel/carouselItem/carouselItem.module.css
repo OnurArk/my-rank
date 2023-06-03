@@ -1,0 +1,8 @@
+.img-container {
+  width: 185px;
+  height: calc(185px * 1.41);
+  min-height: calc(185px * 1.41);
+  filter: contrast(120%);
+
+  cursor: pointer;
+}

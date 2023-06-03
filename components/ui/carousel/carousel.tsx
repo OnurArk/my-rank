@@ -1,12 +1,27 @@
 import { FC, useEffect } from 'react';
-import Image from 'next/image';
 import useSWR from 'swr';
+
+import CarouselItem from './carouselItem/carouselItem';
 
 import styles from './carousel.module.css';
 
 type Props = {
   mal_id: number;
   type: string;
+};
+
+type Recommendations = {
+  entry: {
+    mal_id: number;
+    title: string;
+    images: {
+      jpg: {
+        image_url: string;
+        large_image_url: string;
+        small_image_url: string;
+      };
+    };
+  };
 };
 
 const fetcher = (url: string) =>
@@ -36,7 +51,24 @@ const Carousel: FC<Props> = (props) => {
 
   console.log(recomentData);
 
-  return <div></div>;
+  return (
+    <div className={styles['section-container']}>
+      <h3>People Also Watched</h3>
+      <div className={styles['carousel-container']}>
+        {recomentData &&
+          recomentData?.data
+            ?.slice(0, 8)
+            .map((item: Recommendations) => (
+              <CarouselItem
+                key={item.entry.mal_id}
+                mal_id={item.entry.mal_id}
+                img={item.entry.images.jpg.image_url}
+                title={item.entry.title}
+              />
+            ))}
+      </div>
+    </div>
+  );
 };
 
 export default Carousel;
