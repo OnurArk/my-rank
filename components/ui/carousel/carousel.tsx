@@ -64,32 +64,38 @@ const Carousel: FC<Props> = (props) => {
     }
   }, [error, mutate]);
 
+  console.log(recomentData);
+
   return (
     <div className={styles['section-container']}>
-      <h3 className={styles.title}>People Also Watched</h3>
-      <div className={styles['carousel-container']}>
-        <FontAwesomeIcon
-          className={styles.icon}
-          icon={faAngleLeft}
-          onClick={backwardHandler}
-        />
-        {recomentData &&
-          recomentData?.data
-            ?.slice(startSlice, endSlice)
-            .map((item: Recommendations) => (
-              <CarouselItem
-                key={item.entry.mal_id}
-                mal_id={item.entry.mal_id}
-                img={item.entry.images.jpg.image_url}
-                title={item.entry.title}
-              />
-            ))}
-        <FontAwesomeIcon
-          className={styles.icon}
-          icon={faAngleRight}
-          onClick={forwardHandler}
-        />
-      </div>
+      {recomentData?.data?.length > 0 && !isLoading && (
+        <>
+          <h3 className={styles.title}>People Also Watched</h3>
+          <div className={styles['carousel-container']}>
+            <FontAwesomeIcon
+              className={styles.icon}
+              icon={faAngleLeft}
+              onClick={backwardHandler}
+            />
+            {recomentData &&
+              recomentData?.data
+                ?.slice(startSlice, endSlice)
+                .map((item: Recommendations) => (
+                  <CarouselItem
+                    key={item.entry.mal_id}
+                    mal_id={item.entry.mal_id}
+                    img={item.entry.images.jpg.image_url}
+                    title={item.entry.title}
+                  />
+                ))}
+            <FontAwesomeIcon
+              className={styles.icon}
+              icon={faAngleRight}
+              onClick={forwardHandler}
+            />
+          </div>
+        </>
+      )}
     </div>
   );
 };

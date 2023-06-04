@@ -41,20 +41,36 @@ const DisplayedItemHandler = (props: Props) => {
       switch (true) {
         case newWindowWidth <= 800:
           setDisplayedImg(3);
-          setEndSlice(startSlice + 3);
+          if (endSlice && endSlice === props.arrLength) {
+            setStartSlice(endSlice - 3);
+          } else {
+            setEndSlice(startSlice + 3);
+          }
           break;
         case newWindowWidth > 800 && newWindowWidth <= 1050:
           setDisplayedImg(4);
-          setEndSlice(startSlice + 4);
+          if (endSlice && endSlice === props.arrLength) {
+            setStartSlice(endSlice - 4);
+          } else {
+            setEndSlice(startSlice + 4);
+          }
           break;
 
         case newWindowWidth > 1050 && newWindowWidth <= 1250:
           setDisplayedImg(5);
-          setEndSlice(startSlice + 5);
+          if (endSlice && endSlice === props.arrLength) {
+            setStartSlice(endSlice - 5);
+          } else {
+            setEndSlice(startSlice + 5);
+          }
           break;
         case newWindowWidth > 1250:
           setDisplayedImg(6);
-          setEndSlice(startSlice + 6);
+          if (endSlice && endSlice === props.arrLength) {
+            setStartSlice(endSlice - 6);
+          } else {
+            setEndSlice(startSlice + 6);
+          }
           break;
         default:
           break;
@@ -68,7 +84,7 @@ const DisplayedItemHandler = (props: Props) => {
     return () => {
       window.removeEventListener('resize', handleResize);
     };
-  }, [displayedImg, startSlice]);
+  }, [displayedImg, startSlice, endSlice, props.arrLength]);
 
   return { startSlice, endSlice, forwardHandler, backwardHandler };
 };

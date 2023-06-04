@@ -3,7 +3,7 @@
   width: var(--width);
   height: calc(var(--width) * 1.41);
   min-height: calc(var(--width) * 1.41);
-  filter: contrast(120%);
+  filter: contrast(110%);
 
   cursor: pointer;
   position: relative;
