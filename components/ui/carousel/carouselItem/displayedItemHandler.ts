@@ -5,7 +5,7 @@ type Props = {
 };
 
 const DisplayedItemHandler = (props: Props) => {
-  const [displayedImg, setDisplayedImg] = useState<number>();
+  const [displayedImg, setDisplayedImg] = useState<number>(4);
   const [startSlice, setStartSlice] = useState<number>(0);
   const [endSlice, setEndSlice] = useState<number>();
 
@@ -39,7 +39,7 @@ const DisplayedItemHandler = (props: Props) => {
       const newWindowWidth = window.innerWidth;
 
       switch (true) {
-        case newWindowWidth <= 815:
+        case newWindowWidth <= 835:
           setDisplayedImg(3);
           if (endSlice && endSlice === props.arrLength) {
             setStartSlice(endSlice - 3);
@@ -47,7 +47,7 @@ const DisplayedItemHandler = (props: Props) => {
             setEndSlice(startSlice + 3);
           }
           break;
-        case newWindowWidth > 815 && newWindowWidth <= 1080:
+        case newWindowWidth > 835 && newWindowWidth <= 1100:
           setDisplayedImg(4);
           if (endSlice && endSlice === props.arrLength) {
             setStartSlice(endSlice - 4);
@@ -56,7 +56,7 @@ const DisplayedItemHandler = (props: Props) => {
           }
           break;
 
-        case newWindowWidth > 1080 && newWindowWidth <= 1270:
+        case newWindowWidth > 1100 && newWindowWidth <= 1285:
           setDisplayedImg(5);
           if (endSlice && endSlice === props.arrLength) {
             setStartSlice(endSlice - 5);
@@ -64,7 +64,7 @@ const DisplayedItemHandler = (props: Props) => {
             setEndSlice(startSlice + 5);
           }
           break;
-        case newWindowWidth > 1270:
+        case newWindowWidth > 1285:
           setDisplayedImg(6);
           if (endSlice && endSlice === props.arrLength) {
             setStartSlice(endSlice - 6);
@@ -86,7 +86,13 @@ const DisplayedItemHandler = (props: Props) => {
     };
   }, [displayedImg, startSlice, endSlice, props.arrLength]);
 
-  return { startSlice, endSlice, forwardHandler, backwardHandler };
+  return {
+    startSlice,
+    endSlice,
+    forwardHandler,
+    backwardHandler,
+    displayedImg,
+  };
 };
 
 export default DisplayedItemHandler;

@@ -14,6 +14,9 @@
   display: flex;
   align-items: center;
   gap: 1rem;
+
+  position: relative;
+
   background-color: #2b2d42;
   color: aliceblue;
 }
@@ -31,4 +34,11 @@
 
 .icon:active {
   color: red;
+}
+
+.pageCounter {
+  position: absolute;
+  z-index: 10;
+  right: 0.5rem;
+  bottom: 0.3rem;
 }

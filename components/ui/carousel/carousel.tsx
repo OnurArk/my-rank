@@ -48,8 +48,13 @@ const Carousel: FC<Props> = (props) => {
     fetcher
   );
 
-  const { startSlice, endSlice, forwardHandler, backwardHandler } =
-    DisplayedItemHandler({ arrLength });
+  const {
+    startSlice,
+    endSlice,
+    displayedImg,
+    forwardHandler,
+    backwardHandler,
+  } = DisplayedItemHandler({ arrLength });
 
   useEffect(() => {
     if (recomentData) {
@@ -66,9 +71,10 @@ const Carousel: FC<Props> = (props) => {
 
   return (
     <div className={styles['section-container']}>
-      {recomentData?.data?.length > 0 && !isLoading && (
+      {arrLength && arrLength > 0 && !isLoading && (
         <>
           <h3 className={styles.title}>People Also Watched</h3>
+
           <div className={styles['carousel-container']}>
             <FontAwesomeIcon
               className={styles.icon}
@@ -91,6 +97,9 @@ const Carousel: FC<Props> = (props) => {
               icon={faAngleRight}
               onClick={forwardHandler}
             />
+            <p className={styles.pageCounter}>{`${Math.ceil(
+              (startSlice + 1) / displayedImg
+            )} / ${Math.floor(arrLength / displayedImg)}`}</p>
           </div>
         </>
       )}

@@ -17,19 +17,19 @@
   position: relative;
 }
 
-@media (min-width: 660px) {
+@media (min-width: 670px) {
   .item-container {
     --width: 150px;
   }
 }
 
-@media (min-width: 900px) {
+@media (min-width: 910px) {
   .item-container {
     --width: 170px;
   }
 }
 
-@media (min-width: 1360px) {
+@media (min-width: 1375px) {
   .item-container {
     --width: 185px;
   }
