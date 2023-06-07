@@ -1,4 +1,5 @@
 import { FC } from 'react';
+import Link from 'next/link';
 import Image from 'next/image';
 
 import { ItemData, Title } from '@/models/Item-Type';
@@ -28,9 +29,15 @@ const Item: FC<Props> = (props) => {
     }
   };
   const title = titleHandler(props.item.titles);
-
+  // To do : charackter ve ya anime olarak hreifi değiştir
   return (
-    <div className={`${styles['item-container']} ${props.className}`}>
+    <Link
+      href={{
+        pathname: '/anime/[animeId]',
+        query: { animeId: props?.item?.mal_id },
+      }}
+      className={`${styles['item-container']} ${props.className}`}
+    >
       <div className={styles['img-container']}>
         {props.item.score && <p className={styles.score}>{props.item.score}</p>}
         {props.item.type && <p className={styles.type}>{props.item.type}</p>}
@@ -51,7 +58,7 @@ const Item: FC<Props> = (props) => {
       {!props.item.title && props.item.name && (
         <p className={styles.title}>{props.item.name}</p>
       )}
-    </div>
+    </Link>
   );
 };
 

@@ -39,7 +39,7 @@ const DisplayedItemHandler = (props: Props) => {
       const newWindowWidth = window.innerWidth;
 
       switch (true) {
-        case newWindowWidth <= 800:
+        case newWindowWidth <= 815:
           setDisplayedImg(3);
           if (endSlice && endSlice === props.arrLength) {
             setStartSlice(endSlice - 3);
@@ -47,7 +47,7 @@ const DisplayedItemHandler = (props: Props) => {
             setEndSlice(startSlice + 3);
           }
           break;
-        case newWindowWidth > 800 && newWindowWidth <= 1050:
+        case newWindowWidth > 815 && newWindowWidth <= 1080:
           setDisplayedImg(4);
           if (endSlice && endSlice === props.arrLength) {
             setStartSlice(endSlice - 4);
@@ -56,7 +56,7 @@ const DisplayedItemHandler = (props: Props) => {
           }
           break;
 
-        case newWindowWidth > 1050 && newWindowWidth <= 1250:
+        case newWindowWidth > 1080 && newWindowWidth <= 1270:
           setDisplayedImg(5);
           if (endSlice && endSlice === props.arrLength) {
             setStartSlice(endSlice - 5);
@@ -64,7 +64,7 @@ const DisplayedItemHandler = (props: Props) => {
             setEndSlice(startSlice + 5);
           }
           break;
-        case newWindowWidth > 1250:
+        case newWindowWidth > 1270:
           setDisplayedImg(6);
           if (endSlice && endSlice === props.arrLength) {
             setStartSlice(endSlice - 6);

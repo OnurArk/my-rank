@@ -32,7 +32,7 @@ const SectionList: FC<Props> = (props) => {
 
   useEffect(() => {
     if (error && error.status === 429) {
-      const timeout = setTimeout(() => mutate(), 3000);
+      const timeout = setTimeout(() => mutate(), 1000);
       return () => clearTimeout(timeout);
     }
   }, [error, mutate]);

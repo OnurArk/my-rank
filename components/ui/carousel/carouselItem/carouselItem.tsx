@@ -1,4 +1,5 @@
 import { FC } from 'react';
+import Link from 'next/link';
 import Image from 'next/image';
 
 import styles from './carouselItem.module.css';
@@ -11,7 +12,13 @@ type Props = {
 
 const CarouselItem: FC<Props> = (props) => {
   return (
-    <div>
+    <Link
+      href={{
+        pathname: '/anime/[animeId]',
+        query: { animeId: props.mal_id },
+      }}
+      className={styles['item-container']}
+    >
       <div className={styles['img-container']}>
         <Image
           loader={() => props?.img}
@@ -22,7 +29,8 @@ const CarouselItem: FC<Props> = (props) => {
           priority
         />
       </div>
-    </div>
+      <p>{props.title}</p>
+    </Link>
   );
 };
 
