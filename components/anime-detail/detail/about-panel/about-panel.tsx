@@ -9,9 +9,9 @@ type Props = {
 };
 
 let formattedDateFrom: string;
-let formattedDateTo: string;
 
 const AboutPanel: FC<Props> = (props) => {
+  let formattedDateTo: string | null = null;
   if (props.data?.aired?.from) {
     const dateObj = new Date(props.data.aired?.from);
     formattedDateFrom = dateObj.toLocaleDateString('en', {
@@ -28,6 +28,8 @@ const AboutPanel: FC<Props> = (props) => {
       month: 'long',
     });
   }
+
+  console.log(props.data);
 
   return (
     <div className={styles['panel-about-container']}>
@@ -76,7 +78,15 @@ const AboutPanel: FC<Props> = (props) => {
           <p className={styles.sideText}>{props.data.rank}</p>
         </div>
       )}
-      {props.data?.genres.length !== 0 && (
+
+      {props.data?.source && (
+        <div className={styles['simple-side-container']}>
+          <p className={styles.sideTitle}>Source :</p>
+          <p className={styles.sideText}>{props.data.source}</p>
+        </div>
+      )}
+
+      {props.data?.genres && props.data?.genres.length !== 0 && (
         <div className={styles['simple-side-container']}>
           <p className={styles.sideTitle}>Genres :</p>
           <div className={styles.links}>
@@ -102,12 +112,10 @@ const AboutPanel: FC<Props> = (props) => {
       {props.data?.aired && (formattedDateFrom || props.data.aired?.to) && (
         <div className={styles['simple-side-container']}>
           <p className={styles.sideTitle}>
-            {props.data.airing ? 'End Date' : 'Up to'} :
+            {formattedDateTo ? 'End Date' : 'Up to'} :
           </p>
           <p className={styles.sideText}>
-            {formattedDateTo && props.data.airing
-              ? formattedDateTo
-              : 'On going'}
+            {formattedDateTo ? formattedDateTo : 'On going'}
           </p>
         </div>
       )}
