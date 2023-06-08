@@ -57,6 +57,7 @@ export type ItemData = {
   streaming?: Streaming[];
   genres?: Genres[];
   relations?: Relations[];
+  source?: string;
 };
 
 export type PaginationData = {

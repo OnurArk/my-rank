@@ -34,7 +34,7 @@ const DetailPage: FC<Props> = (props) => {
 
   useEffect(() => {
     if (error && error.status === 429) {
-      const timeout = setTimeout(() => mutate(), 3000);
+      const timeout = setTimeout(() => mutate(), 1200);
       return () => clearTimeout(timeout);
     }
   }, [error, mutate]);
