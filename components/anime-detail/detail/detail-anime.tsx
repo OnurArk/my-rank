@@ -1,9 +1,10 @@
-import { FC, useState } from 'react';
+import { CSSProperties, FC, useState } from 'react';
 import Image from 'next/image';
 
 import Button from '@/components/ui/button/button';
 import AboutPanel from './about-panel/about-panel';
 import Carousel from '@/components/ui/carousel/carousel';
+import AnimeCharacters from './anime-characters/anime-characters';
 
 import { ItemData, Title } from '@/models/Item-Type';
 import styles from './detail-anime.module.css';
@@ -43,20 +44,28 @@ const DetailAnime: FC<Props> = (props) => {
     }
   };
   const title = titleHandler(props.data.titles);
+  console.log(props.data);
+
+  const styleImg = {
+    backgroundImage: `url(${props.data.images?.jpg?.small_image_url})`,
+    backgroundPosition: 'center',
+    backgroundSize: 'cover',
+  } as CSSProperties;
 
   return (
     <div className={styles['detail-anime-container']}>
       <div className={styles.layout1}>
         <div className={styles['img-container']}>
-          {props.data?.images?.jpg.large_image_url && (
+          {
             <Image
               loader={() => props.data?.images?.jpg.large_image_url}
               src={`${props.data?.title}?mal_id=${props.data?.mal_id}.png`}
               alt={props.data?.title || props.data?.name}
               fill
               sizes='(max-width: 591px) 200px , (min-width: 592px) 185px ,(min-width: 1088px) 230px'
+              style={styleImg}
             />
-          )}
+          }
         </div>
         <h2 className={styles.title}>{title}</h2>
       </div>
@@ -73,6 +82,10 @@ const DetailAnime: FC<Props> = (props) => {
       </div>
 
       <div className={styles.layout3}>
+        <AnimeCharacters mal_id={props.data.mal_id} />
+      </div>
+
+      <div className={styles.layout4}>
         <div className={styles.section}>
           {props.data && <Carousel mal_id={props.data.mal_id} type={'anime'} />}
         </div>
