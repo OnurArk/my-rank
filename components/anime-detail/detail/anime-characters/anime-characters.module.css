@@ -1,0 +1,56 @@
+.characters-container {
+  padding: 1.5rem;
+  border-radius: 10px;
+
+  display: flex;
+  gap: 1rem;
+  text-align: center;
+
+  overflow-x: scroll;
+
+  background-color: black;
+}
+
+.img-container {
+  border-radius: 10px;
+
+  width: 110px;
+  aspect-ratio: 0.64;
+  filter: contrast(110%);
+  overflow: hidden;
+  cursor: pointer;
+  user-select: none;
+
+  position: relative;
+}
+
+.name {
+  max-width: 110px;
+  color: aliceblue;
+  font-weight: 500;
+}
+
+.voice {
+  max-width: 110px;
+  color: rgb(137, 137, 137);
+  font-size: 0.8rem;
+}
+
+.characters-container::-webkit-scrollbar {
+  height: 0.7em; /* Set the width of the scrollbar */
+}
+
+.characters-container::-webkit-scrollbar-track {
+  background-color: #989898; /* Set the background color of the track */
+  border-radius: 10px;
+  margin: 0 0.5em 0 0.5em;
+}
+
+.characters-container::-webkit-scrollbar-thumb {
+  background-color: #000000; /* Set the color of the scrollbar thumb */
+  border-radius: 10px;
+}
+
+.characters-container::-webkit-scrollbar-thumb:hover {
+  background-color: #0783b4; /* Set the color of the scrollbar thumb on hover */
+}

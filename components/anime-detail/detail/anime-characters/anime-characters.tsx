@@ -1,7 +1,27 @@
 import { FC, useEffect } from 'react';
+import Image from 'next/image';
 import useSWR from 'swr';
 
 import styles from './anime-characters.module.css';
+
+type VoiceActors = {
+  person: { mal_id: number; name: string };
+};
+
+type Characters = {
+  character: {
+    mal_id: number;
+    name: string;
+    images: { jpg: { image_url: string }; webp: { image_url: string } };
+  };
+  favorites: number;
+  role: string;
+  voice_actors: VoiceActors[];
+};
+
+type AnimeCharactersData = {
+  data: Characters[];
+};
 
 type Props = {
   mal_id: number;
@@ -20,7 +40,7 @@ const AnimeCharacters: FC<Props> = (props) => {
     error,
     isLoading,
     mutate,
-  } = useSWR(
+  } = useSWR<AnimeCharactersData>(
     props?.mal_id
       ? `https://api.jikan.moe/v4/anime/${props?.mal_id}/characters`
       : null,
@@ -36,7 +56,29 @@ const AnimeCharacters: FC<Props> = (props) => {
 
   console.log(animeCharactersData);
 
-  return <div></div>;
+  return (
+    <div className={styles['characters-container']}>
+      {animeCharactersData?.data.map((infoCharacter) => (
+        <div key={infoCharacter.character?.mal_id}>
+          <div className={styles['img-container']}>
+            <Image
+              loader={() => infoCharacter?.character?.images.jpg.image_url}
+              src={`${infoCharacter.character.name}?mal_id=${infoCharacter.character.mal_id}.png`}
+              alt={infoCharacter.character.name}
+              fill
+              sizes='(max-width: 591px) 200px , (min-width: 592px) 185px ,(min-width: 1088px) 230px'
+            />
+          </div>
+          <p className={styles.name}>
+            {infoCharacter.character.name.replace(',', '')}
+          </p>
+          <p className={styles.voice}>
+            {infoCharacter.voice_actors?.[0]?.person.name.replace(',', '')}
+          </p>
+        </div>
+      ))}
+    </div>
+  );
 };
 
 export default AnimeCharacters;
