@@ -3,6 +3,7 @@ import Image from 'next/image';
 
 import Button from '@/components/ui/button/button';
 import AboutPanel from './about-panel/about-panel';
+import EpisodePanel from './episode-panel/episode-panel';
 import Carousel from '@/components/ui/carousel/carousel';
 import AnimeCharacters from './anime-characters/anime-characters';
 
@@ -44,7 +45,6 @@ const DetailAnime: FC<Props> = (props) => {
     }
   };
   const title = titleHandler(props.data.titles);
-  console.log(props.data);
 
   const styleImg = {
     backgroundImage: `url(${props.data.images?.jpg?.small_image_url})`,
@@ -77,7 +77,7 @@ const DetailAnime: FC<Props> = (props) => {
 
         <div className={styles['dynamic-panel']}>
           {isPanelAbout && <AboutPanel data={props.data} />}
-          {!isPanelAbout && <div>Episode kısmı</div>}
+          {!isPanelAbout && <EpisodePanel mal_id={props.data.mal_id} />}
         </div>
       </div>
 

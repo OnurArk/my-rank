@@ -86,6 +86,13 @@ const AboutPanel: FC<Props> = (props) => {
         </div>
       )}
 
+      {props.data?.episodes && (
+        <div className={styles['simple-side-container']}>
+          <p className={styles.sideTitle}>Episodes :</p>
+          <p className={styles.sideText}>{props.data.episodes}</p>
+        </div>
+      )}
+
       {props.data?.genres && props.data?.genres.length !== 0 && (
         <div className={styles['simple-side-container']}>
           <p className={styles.sideTitle}>Genres :</p>

@@ -1,0 +1,36 @@
+.episodes-container {
+  padding: 1rem;
+
+  background-color: rgba(133, 132, 132, 0.795);
+  color: aliceblue;
+  max-height: 25rem;
+  overflow-y: scroll;
+}
+
+.episode-container {
+  padding: 0.5rem 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.338);
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
+  gap: 0.5rem;
+}
+
+.cannon {
+  margin-right: auto;
+  padding: 0 0.3rem 0.2rem;
+  border-radius: 12px;
+  color: rgb(40, 99, 40);
+  background-color: rgb(130, 231, 120);
+}
+
+.filler {
+  margin-right: auto;
+  padding: 0 0.3rem 0.2rem;
+  min-width: 3.3rem;
+  border-radius: 12px;
+  color: rgb(106, 53, 53);
+  background-color: rgb(222, 158, 158);
+}
