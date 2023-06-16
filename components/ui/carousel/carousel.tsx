@@ -58,7 +58,7 @@ const Carousel: FC<Props> = (props) => {
 
   useEffect(() => {
     if (recomentData) {
-      setArrLength(recomentData?.data.length);
+      setArrLength(recomentData?.data?.length);
     }
   }, [recomentData]);
 
