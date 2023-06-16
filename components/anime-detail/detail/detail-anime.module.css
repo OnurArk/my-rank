@@ -52,7 +52,6 @@
 
 .buttons-container {
   padding: 1rem;
-  border-bottom: 1px solid #2b2d42;
 
   display: flex;
   justify-content: center;
@@ -68,7 +67,7 @@
   gap: 1rem;
 }
 
-@media (min-width: 592px) {
+@media (min-width: 598px) {
   .detail-anime-container {
     --width: 185px;
     --imgPosition: 10%;
