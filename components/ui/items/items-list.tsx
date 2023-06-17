@@ -86,7 +86,7 @@ const ItemsList: FC<Props> = (props) => {
           ))}
 
         {props.limit &&
-          isLoading &&
+          (isLoading || error?.status === 429) &&
           Array.from({ length: props.limit }).map((_, index) => (
             <LoadingImg key={index} width={props.imgWidth} />
           ))}
