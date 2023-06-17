@@ -79,6 +79,34 @@
   color: #2b2d42;
 }
 
+.synopsisText {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.4s ease;
+}
+.synopsisText::after {
+  content: '';
+  border-radius: 50%;
+  position: absolute;
+  bottom: 0;
+  left: 10px;
+  right: 10px;
+  height: 0.1rem;
+  background-color: rgba(218, 218, 218, 0.84);
+  box-shadow: 0 -4px 15px 7px rgb(166, 166, 166);
+}
+
+.synopsisTogle {
+  font-weight: 500;
+  color: rgba(11, 93, 126, 0.595);
+
+  cursor: pointer;
+  user-select: none;
+}
+
 @media (min-width: 592px) {
   .sideTitle {
     font-size: 1.1rem;

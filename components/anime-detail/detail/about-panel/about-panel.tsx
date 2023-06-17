@@ -1,27 +1,39 @@
-import { FC } from 'react';
+import { FC, useState } from 'react';
 import Link from 'next/link';
 
 import { ItemData } from '@/models/Item-Type';
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {
+  faAngleDoubleDown,
+  faAngleDoubleUp,
+} from '@fortawesome/free-solid-svg-icons';
 import styles from './about-panel.module.css';
+
 type Props = {
   data: ItemData;
 };
 
-let formattedDateFrom: string;
-
 const AboutPanel: FC<Props> = (props) => {
+  const [isSynopsisFull, setIsSynopsisFull] = useState<boolean>(false);
+  const { data } = props;
+
+  const toggleSynopsisHandler = () => {
+    setIsSynopsisFull((pre) => !pre);
+  };
+
+  let formattedDateFrom: string = '';
   let formattedDateTo: string | null = null;
-  if (props.data?.aired?.from) {
-    const dateObj = new Date(props.data.aired?.from);
+  if (data?.aired?.from) {
+    const dateObj = new Date(data.aired?.from);
     formattedDateFrom = dateObj.toLocaleDateString('en', {
       year: 'numeric',
       month: 'long',
     });
   }
 
-  if (props.data?.aired?.to) {
-    const dateObj = new Date(props.data.aired?.to);
+  if (data?.aired?.to) {
+    const dateObj = new Date(data.aired?.to);
 
     formattedDateTo = dateObj.toLocaleDateString('en', {
       year: 'numeric',
@@ -29,15 +41,15 @@ const AboutPanel: FC<Props> = (props) => {
     });
   }
 
-  console.log(props.data);
+  console.log(data);
 
   return (
     <div className={styles['panel-about-container']}>
-      {props.data?.streaming?.length !== 0 && (
+      {Array.isArray(data?.streaming) && data?.streaming?.length !== 0 && (
         <div className={styles['simple-side-container']}>
           <p className={styles.sideTitle}>Where to Watch :</p>
           <div className={styles.links}>
-            {props.data.streaming?.map((stream, index) => (
+            {data.streaming?.map((stream, index) => (
               <Link
                 href={stream.url}
                 key={index}
@@ -51,53 +63,53 @@ const AboutPanel: FC<Props> = (props) => {
         </div>
       )}
 
-      {props.data?.type && (
+      {data?.type && (
         <div className={styles['simple-side-container']}>
           <p className={styles.sideTitle}>Type :</p>
-          <p className={styles.sideText}>{props.data.type}</p>
+          <p className={styles.sideText}>{data.type}</p>
         </div>
       )}
 
-      {props.data?.duration && (
+      {data?.duration && (
         <div className={styles['simple-side-container']}>
           <p className={styles.sideTitle}>Duration :</p>
-          <p className={styles.sideText}>{props.data.duration}</p>
+          <p className={styles.sideText}>{data.duration}</p>
         </div>
       )}
 
-      {props.data?.score && (
+      {data?.score && (
         <div className={styles['simple-side-container']}>
           <p className={styles.sideTitle}>Score :</p>
-          <p className={styles.sideText}>{props.data.score}</p>
+          <p className={styles.sideText}>{data.score}</p>
         </div>
       )}
 
-      {props.data?.rank && (
+      {data?.rank && (
         <div className={styles['simple-side-container']}>
           <p className={styles.sideTitle}>Rank :</p>
-          <p className={styles.sideText}>{props.data.rank}</p>
+          <p className={styles.sideText}>{data.rank}</p>
         </div>
       )}
 
-      {props.data?.source && (
+      {data?.source && (
         <div className={styles['simple-side-container']}>
           <p className={styles.sideTitle}>Source :</p>
-          <p className={styles.sideText}>{props.data.source}</p>
+          <p className={styles.sideText}>{data.source}</p>
         </div>
       )}
 
-      {props.data?.episodes && (
+      {data?.episodes && (
         <div className={styles['simple-side-container']}>
           <p className={styles.sideTitle}>Episodes :</p>
-          <p className={styles.sideText}>{props.data.episodes}</p>
+          <p className={styles.sideText}>{data.episodes}</p>
         </div>
       )}
 
-      {props.data?.genres && props.data?.genres.length !== 0 && (
+      {Array.isArray(data?.genres) && data?.genres.length !== 0 && (
         <div className={styles['simple-side-container']}>
           <p className={styles.sideTitle}>Genres :</p>
           <div className={styles.links}>
-            {props.data.genres.map((genre) => (
+            {data.genres.map((genre) => (
               <p
                 key={genre.mal_id}
                 className={`${styles.link} ${styles.sideText}`}
@@ -109,14 +121,14 @@ const AboutPanel: FC<Props> = (props) => {
         </div>
       )}
 
-      {props.data?.aired && (formattedDateFrom || props.data.aired?.to) && (
+      {data?.aired && (formattedDateFrom || data.aired?.to) && (
         <div className={styles['simple-side-container']}>
           <p className={styles.sideTitle}>Airing Date :</p>
           <p className={styles.sideText}>{formattedDateFrom}</p>
         </div>
       )}
 
-      {props.data?.aired && (formattedDateFrom || props.data.aired?.to) && (
+      {data?.aired && (formattedDateFrom || data.aired?.to) && (
         <div className={styles['simple-side-container']}>
           <p className={styles.sideTitle}>
             {formattedDateTo ? 'End Date' : 'Up to'} :
@@ -127,10 +139,27 @@ const AboutPanel: FC<Props> = (props) => {
         </div>
       )}
 
-      {props.data?.synopsis && (
+      {data?.synopsis && (
         <div className={styles['Synopsis-container']}>
           <p className={styles.synopsis}>Synopsis</p>
-          <p className={styles.sideText}>{props.data.synopsis}</p>
+          <p
+            className={`${styles.sideText} ${
+              !isSynopsisFull && styles.synopsisText
+            }`}
+          >
+            {data.synopsis}
+          </p>
+          <p className={styles.synopsisTogle} onClick={toggleSynopsisHandler}>
+            {isSynopsisFull ? (
+              <>
+                See Less <FontAwesomeIcon icon={faAngleDoubleUp} />
+              </>
+            ) : (
+              <>
+                Read All <FontAwesomeIcon icon={faAngleDoubleDown} />
+              </>
+            )}{' '}
+          </p>
         </div>
       )}
     </div>
