@@ -1,7 +1,7 @@
 import { FC } from 'react';
 
 import Item from './item/item';
-import LoadingImg from '@/components/ui/loading-img/loading-img';
+import { LoadingImg } from '@/components/ui/loading-skeleton/loading-img';
 
 import { ItemData } from '@/models/Item-Type';
 

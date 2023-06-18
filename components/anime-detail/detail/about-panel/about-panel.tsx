@@ -41,8 +41,6 @@ const AboutPanel: FC<Props> = (props) => {
     });
   }
 
-  console.log(data);
-
   return (
     <div className={styles['panel-about-container']}>
       {Array.isArray(data?.streaming) && data?.streaming?.length !== 0 && (

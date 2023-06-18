@@ -44,7 +44,10 @@ const DetailPage: FC<Props> = (props) => {
       <BackgroundImg />
       <div className={styles.space}></div>
       <div className={styles['detail-container']}>
-        {!isLoading && animeData && <DetailAnime data={animeData?.data} />}
+        <DetailAnime
+          data={animeData?.data}
+          isLoading={isLoading || (error && error.status === 429)}
+        />
       </div>
     </div>
   );

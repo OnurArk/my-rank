@@ -3,7 +3,7 @@ import useSWR from 'swr';
 
 import Card from './card/card';
 import Pagination from '../pagination/pagination';
-import LoadingImg from '../loading-img/loading-img';
+import { LoadingImg } from '../loading-skeleton/loading-img';
 
 import { ItemData, PaginationData } from '@/models/Item-Type';
 import styles from './items-list.module.css';
