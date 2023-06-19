@@ -3,6 +3,8 @@ import useSWR from 'swr';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAngleLeft, faAngleRight } from '@fortawesome/free-solid-svg-icons';
+import { InfinitySpin } from 'react-loader-spinner';
+
 import styles from './episode-panel.module.css';
 
 type Episode = {
@@ -77,20 +79,28 @@ const EpisodePanel: FC<Props> = (props) => {
 
   return (
     <>
-      <div className={styles['episodes-container']}>
-        {data?.data?.map((episode: Episode) => (
-          <div className={styles['episode-container']} key={episode?.mal_id}>
-            <p>Episode : {episode?.mal_id}</p>
-            <p className={`${episode?.filler ? styles.filler : styles.cannon}`}>
-              {episode?.filler ? 'filler' : 'cannon'}
-            </p>
-            <p className={styles.title}>
-              {episode?.title.slice(0, 50)}
-              <span> ({episode?.score})</span>
-            </p>
-          </div>
-        ))}
-      </div>
+      {!isLoading || error?.status !== 429 ? (
+        <div className={styles['episodes-container']}>
+          {data?.data?.map((episode: Episode) => (
+            <div className={styles['episode-container']} key={episode?.mal_id}>
+              <p>Episode : {episode?.mal_id}</p>
+              <p
+                className={`${episode?.filler ? styles.filler : styles.cannon}`}
+              >
+                {episode?.filler ? 'filler' : 'cannon'}
+              </p>
+              <p className={styles.title}>
+                {episode?.title.slice(0, 50)}
+                <span> ({episode?.score})</span>
+              </p>
+            </div>
+          ))}
+        </div>
+      ) : (
+        <div className={styles.loading}>
+          <InfinitySpin width='200' color='#3c89e1' />
+        </div>
+      )}
       <div className={styles.buttons} ref={paginationRef}>
         <FontAwesomeIcon
           icon={faAngleLeft}

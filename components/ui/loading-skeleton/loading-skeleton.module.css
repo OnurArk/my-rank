@@ -18,3 +18,14 @@
     background-position: 0% 100%;
   }
 }
+
+.loading-text-container {
+  flex: 1;
+}
+
+.skeletonText {
+  margin-bottom: 0.6rem;
+}
+.skeletonText:not(:first-child) {
+  margin-top: 0;
+}

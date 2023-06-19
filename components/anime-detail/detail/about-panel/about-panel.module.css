@@ -95,6 +95,19 @@
   user-select: none;
 }
 
+.loading-container {
+  display: flex;
+  flex-direction: row;
+  gap: 0.7rem;
+}
+.loadingInfo {
+  flex: 0.3;
+}
+
+.loadingText {
+  height: 0.9rem;
+}
+
 @media (min-width: 592px) {
   .sideTitle {
     font-size: 1.1rem;

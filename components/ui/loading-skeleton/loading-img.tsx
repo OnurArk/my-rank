@@ -4,8 +4,9 @@ import styles from './loading-skeleton.module.css';
 
 type Props = {
   width?: number;
-  height?: number;
   className?: string;
+  containerClassName?: string;
+  lineNumber?: number;
 };
 
 export const LoadingImg: FC<Props> = (props) => {
@@ -20,12 +21,26 @@ export const LoadingImg: FC<Props> = (props) => {
 
 export const LoadingText: FC<Props> = (props) => {
   const style: CSSProperties = {
-    width: props?.width ? `${props.width}px` : '10vw',
-    height: props?.height ? `${props.height}rem` : '1rem',
-    borderRadius: '15px',
+    width: props?.width ? `${props.width}px` : 'auto',
+    borderRadius: '5px',
   };
 
+  const multipleLine = Array.from(
+    { length: props.lineNumber || 1 },
+    (_, index) => (
+      <div
+        className={`${props.className} ${styles.skeleton} ${styles.skeletonText}`}
+        style={style}
+        key={index}
+      />
+    )
+  );
+
   return (
-    <div className={`${props.className} ${styles.skeleton}`} style={style} />
+    <div
+      className={`${props.containerClassName} ${styles['loading-text-container']}`}
+    >
+      {multipleLine}
+    </div>
   );
 };

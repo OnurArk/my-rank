@@ -67,7 +67,7 @@ const DetailAnime: FC<Props> = (props) => {
             <Image
               loader={() => data?.images?.jpg.large_image_url}
               src={`${data?.title}?mal_id=${data?.mal_id}.png`}
-              alt={data?.title || data?.name}
+              alt={data?.title || data?.name || 'anime-image'}
               fill
               sizes='(max-width: 591px) 200px , (min-width: 592px) 185px ,(min-width: 1088px) 230px'
               style={styleImg}
@@ -75,10 +75,10 @@ const DetailAnime: FC<Props> = (props) => {
           </div>
         )}
         {isLoading && <LoadingImg className={styles['img-container']} />}
-        {isLoading ? (
+        {!isLoading ? (
           <h2 className={styles.title}>{title}</h2>
         ) : (
-          <LoadingText className={styles.title} />
+          <LoadingText className={`${styles.title} ${styles.loadingTitle}`} />
         )}
       </div>
       <div className={styles.layout2}>
@@ -88,18 +88,22 @@ const DetailAnime: FC<Props> = (props) => {
         </div>
 
         <div className={styles['dynamic-panel']}>
-          {isPanelAbout && <AboutPanel data={data} />}
-          {!isPanelAbout && <EpisodePanel mal_id={data.mal_id} />}
+          {isPanelAbout && <AboutPanel data={data} isLoading={isLoading} />}
+          {!isPanelAbout && data && data?.mal_id && (
+            <EpisodePanel mal_id={data.mal_id} />
+          )}
         </div>
       </div>
 
       <div className={styles.layout3}>
-        <AnimeCharacters mal_id={data?.mal_id} />
+        {data && data?.mal_id && <AnimeCharacters mal_id={data?.mal_id} />}
       </div>
 
       <div className={styles.layout4}>
         <div className={styles.section}>
-          {data && <Carousel mal_id={data?.mal_id} type={'anime'} />}
+          {data && data?.mal_id && (
+            <Carousel mal_id={data?.mal_id} type={'anime'} />
+          )}
         </div>
       </div>
     </div>
