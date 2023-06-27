@@ -14,7 +14,18 @@
   filter: contrast(110%);
 
   cursor: pointer;
+
+  text-align: center;
   position: relative;
+}
+
+.title {
+  position: absolute;
+  z-index: 5;
+  bottom: 0;
+  background-color: #2b2d42a7;
+  color: aliceblue;
+  width: var(--width);
 }
 
 @media (min-width: 670px) {

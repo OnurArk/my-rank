@@ -28,8 +28,8 @@ const CarouselItem: FC<Props> = (props) => {
           sizes='(max-width: 550px) 130px , (min-width: 551px) 150px , (min-width: 870px) 155px,(min-width: 1097px) 185px'
           priority
         />
+        <p className={styles.title}>{props.title}</p>
       </div>
-      <p>{props.title}</p>
     </Link>
   );
 };
