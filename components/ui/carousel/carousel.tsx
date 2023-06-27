@@ -3,6 +3,7 @@ import useSWR from 'swr';
 
 import CarouselItem from './carouselItem/carouselItem';
 import DisplayedItemHandler from './carouselItem/displayedItemHandler';
+import { LoadingImg } from '../loading-skeleton/loading-img';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAngleLeft, faAngleRight } from '@fortawesome/free-solid-svg-icons';
@@ -69,6 +70,10 @@ const Carousel: FC<Props> = (props) => {
     }
   }, [error, mutate]);
 
+  const loadingItems = Array.from({ length: 6 }, (_, index) => (
+    <LoadingImg key={index} className={`${styles['loader-container']}`} />
+  ));
+
   return (
     <div className={styles['section-container']}>
       {!!arrLength && arrLength > 0 && !isLoading && (
@@ -80,7 +85,9 @@ const Carousel: FC<Props> = (props) => {
               icon={faAngleLeft}
               onClick={backwardHandler}
             />
-            {recomentData &&
+            {!isLoading &&
+              error?.status !== 429 &&
+              recomentData &&
               recomentData?.data
                 ?.slice(startSlice, endSlice)
                 .map((item: Recommendations) => (
@@ -91,6 +98,9 @@ const Carousel: FC<Props> = (props) => {
                     title={item.entry.title}
                   />
                 ))}
+
+            {(isLoading || error?.status === 429) && loadingItems}
+
             <FontAwesomeIcon
               className={`${styles.icon} ${styles.rightAngel}`}
               icon={faAngleRight}
