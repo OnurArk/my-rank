@@ -90,7 +90,7 @@ const DetailAnime: FC<Props> = (props) => {
         <div className={styles['dynamic-panel']}>
           {isPanelAbout && <AboutPanel data={data} isLoading={isLoading} />}
           {!isPanelAbout && data && data?.mal_id && (
-            <EpisodePanel mal_id={data.mal_id} />
+            <EpisodePanel mal_id={data.mal_id} key={data?.mal_id} />
           )}
         </div>
       </div>

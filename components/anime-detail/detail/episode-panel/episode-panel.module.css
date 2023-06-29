@@ -38,6 +38,11 @@
   gap: 0.5rem;
 }
 
+.noEpisode {
+  text-align: center;
+  color: #2b2d42;
+}
+
 .title {
   display: none;
 }

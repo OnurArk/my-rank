@@ -71,15 +71,9 @@ const EpisodePanel: FC<Props> = (props) => {
     }
   }, [data]);
 
-  useEffect(() => {
-    setCurrentPage(1);
-  }, [props?.mal_id]);
-
-  console.dir(data);
-
   return (
     <>
-      {!isLoading || error?.status !== 429 ? (
+      {!isLoading && error?.status !== 429 ? (
         <div className={styles['episodes-container']}>
           {data?.data?.map((episode: Episode) => (
             <div className={styles['episode-container']} key={episode?.mal_id}>
@@ -95,12 +89,16 @@ const EpisodePanel: FC<Props> = (props) => {
               </p>
             </div>
           ))}
+          {data && data.data.length === 0 && (
+            <h3 className={styles.noEpisode}>There is no episode :(</h3>
+          )}
         </div>
       ) : (
         <div className={styles.loading}>
           <InfinitySpin width='200' color='#3c89e1' />
         </div>
       )}
+
       <div className={styles.buttons} ref={paginationRef}>
         <FontAwesomeIcon
           icon={faAngleLeft}

@@ -1,6 +1,8 @@
 import { FC, useEffect, useState, useRef } from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 import useSWR from 'swr';
+import { motion } from 'framer-motion';
 
 import styles from './anime-characters.module.css';
 
@@ -36,6 +38,18 @@ const fetcher = (url: string) =>
   );
 
 const AnimeCharacters: FC<Props> = (props) => {
+  const [isGrabbing, setIsGrabbing] = useState<boolean>(false);
+  const [width, setWidth] = useState<number>(0);
+  const carouselRef = useRef<HTMLDivElement>(null);
+
+  const handleMouseDown = () => {
+    setIsGrabbing(true);
+  };
+
+  const handleMouseUp = () => {
+    setIsGrabbing(false);
+  };
+
   const {
     data: animeCharactersData,
     error,
@@ -55,40 +69,56 @@ const AnimeCharacters: FC<Props> = (props) => {
     }
   }, [error, mutate]);
 
+  useEffect(() => {}, []);
+
+  console.log(carouselRef);
+
   return (
-    <>
+    <motion.div className={styles['characters-container']} ref={carouselRef}>
       {animeCharactersData &&
         !animeCharactersData?.error &&
         !error &&
         !isLoading && (
-          <div className={styles['characters-container']}>
+          <motion.div
+            drag='x'
+            dragConstraints={{
+              right: 0,
+              left: -animeCharactersData?.data.length * 130,
+            }}
+            className={`${styles['inner-characters-container']}`}
+          >
             {animeCharactersData?.data?.map((infoCharacter) => (
-              <div key={infoCharacter.character?.mal_id}>
-                <div className={styles['img-container']}>
-                  <Image
-                    loader={() =>
-                      infoCharacter?.character?.images.jpg.image_url
-                    }
-                    src={`${infoCharacter.character.name}?mal_id=${infoCharacter.character.mal_id}.png`}
-                    alt={infoCharacter.character.name}
-                    fill
-                    sizes='(max-width: 591px) 200px , (min-width: 592px) 185px ,(min-width: 1088px) 230px'
-                  />
+              <motion.div
+                key={infoCharacter.character?.mal_id}
+                className={styles.item}
+              >
+                <div className={styles['item-container']}>
+                  <div className={styles['img-container']}>
+                    <Image
+                      loader={() =>
+                        infoCharacter?.character?.images.jpg.image_url
+                      }
+                      src={`${infoCharacter.character.name}?mal_id=${infoCharacter.character.mal_id}.png`}
+                      alt={infoCharacter.character.name}
+                      fill
+                      sizes='(max-width: 591px) 200px , (min-width: 592px) 185px ,(min-width: 1088px) 230px'
+                    />
+                  </div>
+                  <p className={styles.name}>
+                    {infoCharacter.character.name.replace(',', '')}
+                  </p>
+                  <p className={styles.voice}>
+                    {infoCharacter.voice_actors?.[0]?.person.name.replace(
+                      ',',
+                      ''
+                    )}
+                  </p>
                 </div>
-                <p className={styles.name}>
-                  {infoCharacter.character.name.replace(',', '')}
-                </p>
-                <p className={styles.voice}>
-                  {infoCharacter.voice_actors?.[0]?.person.name.replace(
-                    ',',
-                    ''
-                  )}
-                </p>
-              </div>
+              </motion.div>
             ))}
-          </div>
+          </motion.div>
         )}
-    </>
+    </motion.div>
   );
 };
 
